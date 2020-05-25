@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bench.iml" filepath="$PROJECT_DIR$/.idea/modules/bench.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common.iml" filepath="$PROJECT_DIR$/.idea/modules/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core.iml" filepath="$PROJECT_DIR$/.idea/modules/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dal.iml" filepath="$PROJECT_DIR$/.idea/modules/dal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/idl.iml" filepath="$PROJECT_DIR$/.idea/modules/idl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/root.iml" filepath="$PROJECT_DIR$/.idea/modules/root.iml" group="simple" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/simple.iml" filepath="$PROJECT_DIR$/.idea/modules/simple.iml" group="simple" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/simple-build.iml" filepath="$PROJECT_DIR$/.idea/modules/simple-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test.iml" filepath="$PROJECT_DIR$/.idea/modules/test.iml" />
+    </modules>
+  </component>
+</project>

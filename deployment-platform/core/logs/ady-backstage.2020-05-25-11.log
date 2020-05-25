@@ -1,0 +1,851 @@
+2020-05-25T11:08:44.227+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:08:44.487+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:35941] with UID [6975844912609181850]
+2020-05-25T11:08:44.501+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:08:44.551+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:08:44.552+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - Started up successfully
+2020-05-25T11:08:44.584+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:08:44.590+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:08:45.366+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:08:45.558+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:08:46.776+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:08:46.777+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@42f7577
+2020-05-25T11:08:47.121+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:08:47.122+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:35941
+2020-05-25T11:08:47.461+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:08:47.484+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:08:47.491+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:08:47.536+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:08:49.134+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:08:49.147+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:84e61e6c-0297-47a5-90e2-9c7e0bffb803,simple-dev-1,127.0.1.1,127.0.1.1,35941,akka,0))
+2020-05-25T11:08:49.150+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:84e61e6c-0297-47a5-90e2-9c7e0bffb803,simple-dev-1,127.0.1.1,127.0.1.1,35941,akka,0))
+2020-05-25T11:08:49.151+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:35941)
+2020-05-25T11:08:49.190+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - Node [akka://simple-dev-1@127.0.1.1:35941] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:08:49.195+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:08:49.204+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - Leader is moving node [akka://simple-dev-1@127.0.1.1:35941] to [Up]
+2020-05-25T11:10:20.595+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56492
+2020-05-25T11:10:27.429+08:00 ERROR o.h.s.service-errors Error servicing request: POST /v1/deployments from 127.0.0.1
+org.postgresql.util.PSQLException: 错误: 语法错误 在 "name" 或附近的
+  位置：41
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at doobie.free.KleisliInterpreter$PreparedStatementInterpreter.$anonfun$executeQuery$2(kleisliinterpreter.scala:956)
+	at doobie.free.KleisliInterpreter.$anonfun$primitive$2(kleisliinterpreter.scala:112)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:87)
+	at cats.effect.internals.IORunLoop$.startCancelable(IORunLoop.scala:41)
+	at cats.effect.internals.IOBracket$BracketStart.run(IOBracket.scala:88)
+	at cats.effect.internals.Trampoline.cats$effect$internals$Trampoline$$immediateLoop(Trampoline.scala:67)
+	at cats.effect.internals.Trampoline.startLoop(Trampoline.scala:35)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.super$startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.$anonfun$startLoop$1(TrampolineEC.scala:89)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.Trampoline.execute(Trampoline.scala:43)
+	at cats.effect.internals.TrampolineEC.execute(TrampolineEC.scala:42)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:69)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:49)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:139)
+	at cats.effect.internals.IORunLoop$RestartCallback.signal(IORunLoop.scala:359)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:380)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:323)
+	at cats.effect.internals.IOShift$Tick.run(IOShift.scala:35)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-25T11:11:05.229+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56494
+2020-05-25T11:11:05.245+08:00 ERROR o.h.s.service-errors Error servicing request: POST /v1/deployments from 127.0.0.1
+org.postgresql.util.PSQLException: 错误: 语法错误 在 "name" 或附近的
+  位置：41
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at doobie.free.KleisliInterpreter$PreparedStatementInterpreter.$anonfun$executeQuery$2(kleisliinterpreter.scala:956)
+	at doobie.free.KleisliInterpreter.$anonfun$primitive$2(kleisliinterpreter.scala:112)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:87)
+	at cats.effect.internals.IORunLoop$.startCancelable(IORunLoop.scala:41)
+	at cats.effect.internals.IOBracket$BracketStart.run(IOBracket.scala:88)
+	at cats.effect.internals.Trampoline.cats$effect$internals$Trampoline$$immediateLoop(Trampoline.scala:67)
+	at cats.effect.internals.Trampoline.startLoop(Trampoline.scala:35)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.super$startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.$anonfun$startLoop$1(TrampolineEC.scala:89)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.Trampoline.execute(Trampoline.scala:43)
+	at cats.effect.internals.TrampolineEC.execute(TrampolineEC.scala:42)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:69)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:49)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:139)
+	at cats.effect.internals.IORunLoop$RestartCallback.signal(IORunLoop.scala:359)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:380)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:323)
+	at cats.effect.internals.IOShift$Tick.run(IOShift.scala:35)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-25T11:11:50.428+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - Marked address [akka://simple-dev-1@127.0.1.1:35941] as [Leaving]
+2020-05-25T11:11:50.434+08:00 INFO  o.h.b.c.ServerChannel Closing NIO1 channel /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:11:50.443+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-25T11:11:50.443+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-25T11:11:50.443+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-25T11:11:50.443+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-25T11:11:50.443+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-25T11:11:50.444+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-25T11:11:50.483+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-25T11:11:51.235+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - Leader is moving node [akka://simple-dev-1@127.0.1.1:35941] to [Exiting]
+2020-05-25T11:11:51.243+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - Exiting completed
+2020-05-25T11:11:51.246+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - Shutting down...
+2020-05-25T11:11:51.251+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35941] - Successfully shut down
+2020-05-25T11:11:51.266+08:00 WARN  c.a.a.d.c.AkkaNodeDiscovererTyped received cluster event message: MemberRemoved(Member(address = akka://simple-dev-1@127.0.1.1:35941, status = Removed),Exiting)
+2020-05-25T11:11:51.298+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-25T11:11:51.303+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Member is Removed: akka://simple-dev-1@127.0.1.1:35941
+2020-05-25T11:11:51.304+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-25T11:11:51.326+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-25T11:11:51.335+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-25T11:12:22.555+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:12:22.812+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:40299] with UID [-5014936977631582836]
+2020-05-25T11:12:22.827+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:12:22.875+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:12:22.875+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - Started up successfully
+2020-05-25T11:12:22.905+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:12:22.906+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:12:23.645+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:12:23.853+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:12:25.004+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:12:25.005+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@3ffdd4c8
+2020-05-25T11:12:25.371+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:12:25.374+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:40299
+2020-05-25T11:12:25.725+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:12:25.733+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:12:25.743+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:12:25.769+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:12:27.387+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:12:27.416+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:84dc9e6f-14a6-46fd-bc60-5c2a506f078d,simple-dev-1,127.0.1.1,127.0.1.1,40299,akka,0))
+2020-05-25T11:12:27.417+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:84dc9e6f-14a6-46fd-bc60-5c2a506f078d,simple-dev-1,127.0.1.1,127.0.1.1,40299,akka,0))
+2020-05-25T11:12:27.418+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:40299)
+2020-05-25T11:12:27.446+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - Node [akka://simple-dev-1@127.0.1.1:40299] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:12:27.450+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:12:27.459+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - Leader is moving node [akka://simple-dev-1@127.0.1.1:40299] to [Up]
+2020-05-25T11:12:40.621+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56524
+2020-05-25T11:12:40.911+08:00 ERROR o.h.s.service-errors Error servicing request: POST /v1/deployments from 127.0.0.1
+org.postgresql.util.PSQLException: 错误: 字段 "created_by" 不存在
+  建议：也许您想要引用列"user_info.created_at"。
+  位置：112
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at doobie.free.KleisliInterpreter$PreparedStatementInterpreter.$anonfun$executeQuery$2(kleisliinterpreter.scala:956)
+	at doobie.free.KleisliInterpreter.$anonfun$primitive$2(kleisliinterpreter.scala:112)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:87)
+	at cats.effect.internals.IORunLoop$.startCancelable(IORunLoop.scala:41)
+	at cats.effect.internals.IOBracket$BracketStart.run(IOBracket.scala:88)
+	at cats.effect.internals.Trampoline.cats$effect$internals$Trampoline$$immediateLoop(Trampoline.scala:67)
+	at cats.effect.internals.Trampoline.startLoop(Trampoline.scala:35)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.super$startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.$anonfun$startLoop$1(TrampolineEC.scala:89)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.Trampoline.execute(Trampoline.scala:43)
+	at cats.effect.internals.TrampolineEC.execute(TrampolineEC.scala:42)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:69)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:49)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:139)
+	at cats.effect.internals.IORunLoop$RestartCallback.signal(IORunLoop.scala:359)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:380)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:323)
+	at cats.effect.internals.IOShift$Tick.run(IOShift.scala:35)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-25T11:15:26.269+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - Marked address [akka://simple-dev-1@127.0.1.1:40299] as [Leaving]
+2020-05-25T11:15:26.289+08:00 INFO  o.h.b.c.ServerChannel Closing NIO1 channel /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:15:26.293+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-25T11:15:26.293+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-25T11:15:26.294+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-25T11:15:26.296+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-25T11:15:26.297+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-25T11:15:26.299+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-25T11:15:26.335+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-25T11:15:26.477+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - Leader is moving node [akka://simple-dev-1@127.0.1.1:40299] to [Exiting]
+2020-05-25T11:15:26.480+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - Exiting completed
+2020-05-25T11:15:26.480+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - Shutting down...
+2020-05-25T11:15:26.485+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40299] - Successfully shut down
+2020-05-25T11:15:26.494+08:00 WARN  c.a.a.d.c.AkkaNodeDiscovererTyped received cluster event message: MemberRemoved(Member(address = akka://simple-dev-1@127.0.1.1:40299, status = Removed),Exiting)
+2020-05-25T11:15:26.510+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-25T11:15:26.514+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-25T11:15:26.518+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Member is Removed: akka://simple-dev-1@127.0.1.1:40299
+2020-05-25T11:15:26.538+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-25T11:15:26.553+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-25T11:17:22.537+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:17:22.832+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:45495] with UID [4635925082490065926]
+2020-05-25T11:17:22.846+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:17:22.896+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:17:22.897+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - Started up successfully
+2020-05-25T11:17:22.924+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:17:22.926+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:17:23.749+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:17:23.959+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:17:25.339+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:17:25.340+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@7238b2
+2020-05-25T11:17:25.698+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:17:25.698+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:45495
+2020-05-25T11:17:26.182+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:17:26.199+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:17:26.291+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:17:26.365+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:17:27.709+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:17:27.734+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:7ef16052-edb8-4728-9b67-6b177c06de3e,simple-dev-1,127.0.1.1,127.0.1.1,45495,akka,0))
+2020-05-25T11:17:27.736+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:7ef16052-edb8-4728-9b67-6b177c06de3e,simple-dev-1,127.0.1.1,127.0.1.1,45495,akka,0))
+2020-05-25T11:17:27.737+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:45495)
+2020-05-25T11:17:27.773+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - Node [akka://simple-dev-1@127.0.1.1:45495] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:17:27.775+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:17:27.791+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - Leader is moving node [akka://simple-dev-1@127.0.1.1:45495] to [Up]
+2020-05-25T11:17:39.149+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56564
+2020-05-25T11:19:53.686+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - Marked address [akka://simple-dev-1@127.0.1.1:45495] as [Leaving]
+2020-05-25T11:19:53.712+08:00 INFO  o.h.b.c.ServerChannel Closing NIO1 channel /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:19:53.714+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-25T11:19:53.714+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-25T11:19:53.714+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-25T11:19:53.714+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-25T11:19:53.714+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-25T11:19:53.718+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-25T11:19:53.754+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-25T11:19:53.870+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - Leader is moving node [akka://simple-dev-1@127.0.1.1:45495] to [Exiting]
+2020-05-25T11:19:53.877+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - Exiting completed
+2020-05-25T11:19:53.880+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - Shutting down...
+2020-05-25T11:19:53.885+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:45495] - Successfully shut down
+2020-05-25T11:19:53.891+08:00 WARN  c.a.a.d.c.AkkaNodeDiscovererTyped received cluster event message: MemberRemoved(Member(address = akka://simple-dev-1@127.0.1.1:45495, status = Removed),Exiting)
+2020-05-25T11:19:53.918+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-25T11:19:53.919+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-25T11:19:53.928+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Member is Removed: akka://simple-dev-1@127.0.1.1:45495
+2020-05-25T11:19:53.961+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-25T11:19:53.975+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-25T11:20:21.743+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:20:22.012+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:40103] with UID [-4612667626534822281]
+2020-05-25T11:20:22.028+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:20:22.078+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:20:22.079+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - Started up successfully
+2020-05-25T11:20:22.111+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:20:22.114+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:20:22.888+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:20:23.084+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:20:24.383+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:20:24.384+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@28e97d0b
+2020-05-25T11:20:24.724+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:20:24.725+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:40103
+2020-05-25T11:20:25.077+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:20:25.083+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:20:25.123+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:20:25.132+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:20:26.735+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:20:26.765+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:c89df8ec-d965-4ffa-912b-12fde3430e36,simple-dev-1,127.0.1.1,127.0.1.1,40103,akka,0))
+2020-05-25T11:20:26.767+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:c89df8ec-d965-4ffa-912b-12fde3430e36,simple-dev-1,127.0.1.1,127.0.1.1,40103,akka,0))
+2020-05-25T11:20:26.767+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:40103)
+2020-05-25T11:20:26.804+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - Node [akka://simple-dev-1@127.0.1.1:40103] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:20:26.806+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:20:26.819+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - Leader is moving node [akka://simple-dev-1@127.0.1.1:40103] to [Up]
+2020-05-25T11:20:39.377+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56594
+2020-05-25T11:21:54.396+08:00 INFO  o.h.b.c.ServerChannel Closing NIO1 channel /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:21:54.419+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-25T11:21:54.419+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - Marked address [akka://simple-dev-1@127.0.1.1:40103] as [Leaving]
+2020-05-25T11:21:54.420+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-25T11:21:54.422+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-25T11:21:54.423+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-25T11:21:54.423+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-25T11:21:54.424+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-25T11:21:54.464+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-25T11:21:54.905+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - Leader is moving node [akka://simple-dev-1@127.0.1.1:40103] to [Exiting]
+2020-05-25T11:21:54.908+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - Exiting completed
+2020-05-25T11:21:54.911+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - Shutting down...
+2020-05-25T11:21:54.915+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:40103] - Successfully shut down
+2020-05-25T11:21:54.925+08:00 WARN  c.a.a.d.c.AkkaNodeDiscovererTyped received cluster event message: MemberRemoved(Member(address = akka://simple-dev-1@127.0.1.1:40103, status = Removed),Exiting)
+2020-05-25T11:21:54.932+08:00 INFO  a.a.LocalActorRef Message [akka.cluster.InternalClusterAction$GossipTick$] from Actor[akka://simple-dev-1/system/cluster/core/daemon#255474277] to Actor[akka://simple-dev-1/system/cluster/core/daemon#255474277] was not delivered. [1] dead letters encountered. If this is not an expected behavior then Actor[akka://simple-dev-1/system/cluster/core/daemon#255474277] may have terminated unexpectedly. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2020-05-25T11:21:54.934+08:00 INFO  a.a.LocalActorRef Message [akka.cluster.InternalClusterAction$ReapUnreachableTick$] from Actor[akka://simple-dev-1/system/cluster/core/daemon#255474277] to Actor[akka://simple-dev-1/system/cluster/core/daemon#255474277] was not delivered. [2] dead letters encountered. If this is not an expected behavior then Actor[akka://simple-dev-1/system/cluster/core/daemon#255474277] may have terminated unexpectedly. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2020-05-25T11:21:54.942+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Member is Removed: akka://simple-dev-1@127.0.1.1:40103
+2020-05-25T11:21:54.946+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-25T11:21:54.946+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-25T11:21:54.977+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-25T11:21:54.988+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-25T11:22:25.554+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:22:25.811+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:35779] with UID [4236796191637412051]
+2020-05-25T11:22:25.826+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:22:25.875+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:22:25.875+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - Started up successfully
+2020-05-25T11:22:25.925+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:22:25.925+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:22:26.626+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:22:26.828+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:22:28.052+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:22:28.053+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@777472ea
+2020-05-25T11:22:28.388+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:22:28.389+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:35779
+2020-05-25T11:22:28.706+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:22:28.711+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:22:28.712+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:22:28.741+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:22:30.399+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:22:30.426+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:de5295b6-0615-4690-936b-27533cfa18db,simple-dev-1,127.0.1.1,127.0.1.1,35779,akka,0))
+2020-05-25T11:22:30.427+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:de5295b6-0615-4690-936b-27533cfa18db,simple-dev-1,127.0.1.1,127.0.1.1,35779,akka,0))
+2020-05-25T11:22:30.427+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:35779)
+2020-05-25T11:22:30.450+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - Node [akka://simple-dev-1@127.0.1.1:35779] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:22:30.453+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:22:30.462+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - Leader is moving node [akka://simple-dev-1@127.0.1.1:35779] to [Up]
+2020-05-25T11:22:39.841+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56630
+2020-05-25T11:26:30.583+08:00 INFO  o.h.b.c.ServerChannel Closing NIO1 channel /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:26:30.583+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - Marked address [akka://simple-dev-1@127.0.1.1:35779] as [Leaving]
+2020-05-25T11:26:30.599+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-25T11:26:30.599+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-25T11:26:30.599+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-25T11:26:30.601+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-25T11:26:30.602+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-25T11:26:30.604+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-25T11:26:30.623+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-25T11:26:30.690+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - Leader is moving node [akka://simple-dev-1@127.0.1.1:35779] to [Exiting]
+2020-05-25T11:26:30.694+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - Exiting completed
+2020-05-25T11:26:30.703+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - Shutting down...
+2020-05-25T11:26:30.704+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:35779] - Successfully shut down
+2020-05-25T11:26:30.709+08:00 INFO  a.a.RepointableActorRef Message [akka.cluster.ClusterEvent$SeenChanged] to Actor[akka://simple-dev-1/system/clusterEventBusListener#460008683] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2020-05-25T11:26:30.726+08:00 WARN  c.a.a.d.c.AkkaNodeDiscovererTyped received cluster event message: MemberRemoved(Member(address = akka://simple-dev-1@127.0.1.1:35779, status = Removed),Exiting)
+2020-05-25T11:26:30.743+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-25T11:26:30.747+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-25T11:26:30.760+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Member is Removed: akka://simple-dev-1@127.0.1.1:35779
+2020-05-25T11:26:30.779+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-25T11:26:30.799+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-25T11:27:01.380+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:27:01.648+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:34995] with UID [-913635421614093757]
+2020-05-25T11:27:01.664+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:27:01.714+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:27:01.715+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - Started up successfully
+2020-05-25T11:27:01.741+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:27:01.741+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:27:02.591+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:27:02.827+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:27:04.178+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:27:04.179+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@519ed969
+2020-05-25T11:27:04.527+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:27:04.527+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:34995
+2020-05-25T11:27:04.873+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:27:04.880+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:27:04.891+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:27:04.920+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:27:06.543+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:27:06.568+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:63228e88-d79d-4748-a330-4b52e50b2793,simple-dev-1,127.0.1.1,127.0.1.1,34995,akka,0))
+2020-05-25T11:27:06.569+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:63228e88-d79d-4748-a330-4b52e50b2793,simple-dev-1,127.0.1.1,127.0.1.1,34995,akka,0))
+2020-05-25T11:27:06.570+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:34995)
+2020-05-25T11:27:06.593+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - Node [akka://simple-dev-1@127.0.1.1:34995] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:27:06.595+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:27:06.601+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - Leader is moving node [akka://simple-dev-1@127.0.1.1:34995] to [Up]
+2020-05-25T11:28:26.935+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56660
+2020-05-25T11:28:27.213+08:00 ERROR o.h.s.service-errors Error servicing request: POST /v1/deployments from 127.0.0.1
+org.postgresql.util.PSQLException: 错误: 语法错误 在 "project_name" 或附近的
+  位置：70
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at doobie.free.KleisliInterpreter$PreparedStatementInterpreter.$anonfun$executeQuery$2(kleisliinterpreter.scala:956)
+	at doobie.free.KleisliInterpreter.$anonfun$primitive$2(kleisliinterpreter.scala:112)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:87)
+	at cats.effect.internals.IORunLoop$.startCancelable(IORunLoop.scala:41)
+	at cats.effect.internals.IOBracket$BracketStart.run(IOBracket.scala:88)
+	at cats.effect.internals.Trampoline.cats$effect$internals$Trampoline$$immediateLoop(Trampoline.scala:67)
+	at cats.effect.internals.Trampoline.startLoop(Trampoline.scala:35)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.super$startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.$anonfun$startLoop$1(TrampolineEC.scala:89)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.Trampoline.execute(Trampoline.scala:43)
+	at cats.effect.internals.TrampolineEC.execute(TrampolineEC.scala:42)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:69)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:49)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:139)
+	at cats.effect.internals.IORunLoop$RestartCallback.signal(IORunLoop.scala:359)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:380)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:323)
+	at cats.effect.internals.IOShift$Tick.run(IOShift.scala:35)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-25T11:29:34.686+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - Marked address [akka://simple-dev-1@127.0.1.1:34995] as [Leaving]
+2020-05-25T11:29:34.701+08:00 INFO  o.h.b.c.ServerChannel Closing NIO1 channel /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:29:34.707+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-25T11:29:34.716+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - Leader is moving node [akka://simple-dev-1@127.0.1.1:34995] to [Exiting]
+2020-05-25T11:29:34.718+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-25T11:29:34.719+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-25T11:29:34.723+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-25T11:29:34.723+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-25T11:29:34.724+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-25T11:29:34.727+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - Exiting completed
+2020-05-25T11:29:34.733+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - Shutting down...
+2020-05-25T11:29:34.734+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:34995] - Successfully shut down
+2020-05-25T11:29:34.760+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-25T11:29:34.765+08:00 WARN  c.a.a.d.c.AkkaNodeDiscovererTyped received cluster event message: MemberRemoved(Member(address = akka://simple-dev-1@127.0.1.1:34995, status = Removed),Exiting)
+2020-05-25T11:29:34.789+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-25T11:29:34.790+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-25T11:29:34.821+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-25T11:29:34.827+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Member is Removed: akka://simple-dev-1@127.0.1.1:34995
+2020-05-25T11:29:34.839+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-25T11:30:04.933+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:30:05.200+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:37967] with UID [9163634570007665482]
+2020-05-25T11:30:05.217+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:30:05.266+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:30:05.267+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - Started up successfully
+2020-05-25T11:30:05.298+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:30:05.299+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:30:06.012+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:30:06.227+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:30:07.441+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:30:07.443+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@4782cc1b
+2020-05-25T11:30:07.831+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:30:07.832+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:37967
+2020-05-25T11:30:08.208+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:30:08.216+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:30:08.234+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:30:08.251+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:30:09.846+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:30:09.874+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:7ca4bcf6-5c26-4731-af28-3d8cc07a779b,simple-dev-1,127.0.1.1,127.0.1.1,37967,akka,0))
+2020-05-25T11:30:09.876+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:7ca4bcf6-5c26-4731-af28-3d8cc07a779b,simple-dev-1,127.0.1.1,127.0.1.1,37967,akka,0))
+2020-05-25T11:30:09.876+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:37967)
+2020-05-25T11:30:09.912+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - Node [akka://simple-dev-1@127.0.1.1:37967] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:30:09.915+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:30:09.923+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - Leader is moving node [akka://simple-dev-1@127.0.1.1:37967] to [Up]
+2020-05-25T11:30:17.721+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56696
+2020-05-25T11:30:17.984+08:00 ERROR o.h.s.service-errors Error servicing request: POST /v1/deployments from 127.0.0.1
+org.postgresql.util.PSQLException: 错误: 语法错误 在 "FROM" 或附近的
+  位置：275
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at doobie.free.KleisliInterpreter$PreparedStatementInterpreter.$anonfun$executeQuery$2(kleisliinterpreter.scala:956)
+	at doobie.free.KleisliInterpreter.$anonfun$primitive$2(kleisliinterpreter.scala:112)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:87)
+	at cats.effect.internals.IORunLoop$.startCancelable(IORunLoop.scala:41)
+	at cats.effect.internals.IOBracket$BracketStart.run(IOBracket.scala:88)
+	at cats.effect.internals.Trampoline.cats$effect$internals$Trampoline$$immediateLoop(Trampoline.scala:67)
+	at cats.effect.internals.Trampoline.startLoop(Trampoline.scala:35)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.super$startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.$anonfun$startLoop$1(TrampolineEC.scala:89)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.Trampoline.execute(Trampoline.scala:43)
+	at cats.effect.internals.TrampolineEC.execute(TrampolineEC.scala:42)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:69)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:49)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:139)
+	at cats.effect.internals.IORunLoop$RestartCallback.signal(IORunLoop.scala:359)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:380)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:323)
+	at cats.effect.internals.IOShift$Tick.run(IOShift.scala:35)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-25T11:30:44.043+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - Marked address [akka://simple-dev-1@127.0.1.1:37967] as [Leaving]
+2020-05-25T11:30:44.046+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - Leader is moving node [akka://simple-dev-1@127.0.1.1:37967] to [Exiting]
+2020-05-25T11:30:44.059+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - Exiting completed
+2020-05-25T11:30:44.070+08:00 INFO  o.h.b.c.ServerChannel Closing NIO1 channel /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:30:44.081+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-25T11:30:44.081+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-25T11:30:44.082+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-25T11:30:44.087+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - Shutting down...
+2020-05-25T11:30:44.087+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-25T11:30:44.087+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-25T11:30:44.093+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-25T11:30:44.103+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:37967] - Successfully shut down
+2020-05-25T11:30:44.109+08:00 WARN  c.a.a.d.c.AkkaNodeDiscovererTyped received cluster event message: MemberRemoved(Member(address = akka://simple-dev-1@127.0.1.1:37967, status = Removed),Exiting)
+2020-05-25T11:30:44.162+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-25T11:30:44.166+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-25T11:30:44.173+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-25T11:30:44.181+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Member is Removed: akka://simple-dev-1@127.0.1.1:37967
+2020-05-25T11:30:44.223+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-25T11:30:44.238+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-25T11:31:14.475+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:31:14.736+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:39025] with UID [7849908744595984067]
+2020-05-25T11:31:14.750+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:31:14.796+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:31:14.797+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - Started up successfully
+2020-05-25T11:31:14.824+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:31:14.824+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:31:15.546+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:31:15.733+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:31:16.986+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:31:16.987+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@2aa6ad2d
+2020-05-25T11:31:17.363+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:31:17.363+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:39025
+2020-05-25T11:31:17.702+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:31:17.711+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:31:17.711+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:31:17.745+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:31:19.372+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:31:19.391+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:9dcb93e6-2bf5-47e0-8061-a6e8253143e8,simple-dev-1,127.0.1.1,127.0.1.1,39025,akka,0))
+2020-05-25T11:31:19.398+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:9dcb93e6-2bf5-47e0-8061-a6e8253143e8,simple-dev-1,127.0.1.1,127.0.1.1,39025,akka,0))
+2020-05-25T11:31:19.399+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:39025)
+2020-05-25T11:31:19.433+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - Node [akka://simple-dev-1@127.0.1.1:39025] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:31:19.435+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:31:19.441+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - Leader is moving node [akka://simple-dev-1@127.0.1.1:39025] to [Up]
+2020-05-25T11:31:25.349+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56726
+2020-05-25T11:35:00.341+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - Marked address [akka://simple-dev-1@127.0.1.1:39025] as [Leaving]
+2020-05-25T11:35:00.346+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-25T11:35:00.355+08:00 INFO  o.h.b.c.ServerChannel Closing NIO1 channel /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:35:00.362+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-25T11:35:00.372+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-25T11:35:00.372+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-25T11:35:00.377+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-25T11:35:00.383+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-25T11:35:00.417+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-25T11:35:01.222+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - Leader is moving node [akka://simple-dev-1@127.0.1.1:39025] to [Exiting]
+2020-05-25T11:35:01.229+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - Exiting completed
+2020-05-25T11:35:01.231+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - Shutting down...
+2020-05-25T11:35:01.233+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39025] - Successfully shut down
+2020-05-25T11:35:01.241+08:00 WARN  c.a.a.d.c.AkkaNodeDiscovererTyped received cluster event message: MemberRemoved(Member(address = akka://simple-dev-1@127.0.1.1:39025, status = Removed),Exiting)
+2020-05-25T11:35:01.258+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-25T11:35:01.260+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-25T11:35:01.267+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Member is Removed: akka://simple-dev-1@127.0.1.1:39025
+2020-05-25T11:35:01.284+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-25T11:35:01.299+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-25T11:38:47.170+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:38:47.432+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:39175] with UID [-5402360518662304861]
+2020-05-25T11:38:47.449+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:38:47.497+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:38:47.498+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - Started up successfully
+2020-05-25T11:38:47.535+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:38:47.537+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:38:48.273+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:38:48.462+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:38:49.769+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:38:49.770+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@4af84258
+2020-05-25T11:38:50.143+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:38:50.143+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:39175
+2020-05-25T11:38:50.521+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:38:50.528+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:38:50.541+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:38:50.566+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:38:52.150+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:38:52.210+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:43afdec6-1cb1-4ca5-80e8-9e32261da8bc,simple-dev-1,127.0.1.1,127.0.1.1,39175,akka,0))
+2020-05-25T11:38:52.213+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:43afdec6-1cb1-4ca5-80e8-9e32261da8bc,simple-dev-1,127.0.1.1,127.0.1.1,39175,akka,0))
+2020-05-25T11:38:52.214+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:39175)
+2020-05-25T11:38:52.265+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - Node [akka://simple-dev-1@127.0.1.1:39175] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:38:52.267+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:38:52.274+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - Leader is moving node [akka://simple-dev-1@127.0.1.1:39175] to [Up]
+2020-05-25T11:39:24.110+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56788
+2020-05-25T11:43:10.370+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - Marked address [akka://simple-dev-1@127.0.1.1:39175] as [Leaving]
+2020-05-25T11:43:10.382+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-25T11:43:10.383+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-25T11:43:10.383+08:00 INFO  o.h.b.c.ServerChannel Closing NIO1 channel /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:43:10.383+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-25T11:43:10.383+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-25T11:43:10.384+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-25T11:43:10.388+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-25T11:43:10.421+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-25T11:43:10.670+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - Leader is moving node [akka://simple-dev-1@127.0.1.1:39175] to [Exiting]
+2020-05-25T11:43:10.673+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - Exiting completed
+2020-05-25T11:43:10.675+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - Shutting down...
+2020-05-25T11:43:10.681+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39175] - Successfully shut down
+2020-05-25T11:43:10.689+08:00 WARN  c.a.a.d.c.AkkaNodeDiscovererTyped received cluster event message: MemberRemoved(Member(address = akka://simple-dev-1@127.0.1.1:39175, status = Removed),Exiting)
+2020-05-25T11:43:10.704+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Member is Removed: akka://simple-dev-1@127.0.1.1:39175
+2020-05-25T11:43:10.709+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-25T11:43:10.711+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-25T11:43:10.746+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-25T11:43:10.766+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-25T11:51:51.460+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:51:51.715+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:39757] with UID [6261939507944625593]
+2020-05-25T11:51:51.729+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:51:51.780+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:51:51.780+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - Started up successfully
+2020-05-25T11:51:51.811+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:51:51.815+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:51:52.583+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:51:52.784+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:51:54.109+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:51:54.110+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@631e41f1
+2020-05-25T11:51:54.454+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:51:54.455+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:39757
+2020-05-25T11:51:54.805+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:51:54.811+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:51:54.836+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:51:54.852+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:51:56.473+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:51:56.501+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:ecc59ca3-13e2-4b1e-9970-454340709fb3,simple-dev-1,127.0.1.1,127.0.1.1,39757,akka,0))
+2020-05-25T11:51:56.503+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:ecc59ca3-13e2-4b1e-9970-454340709fb3,simple-dev-1,127.0.1.1,127.0.1.1,39757,akka,0))
+2020-05-25T11:51:56.504+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:39757)
+2020-05-25T11:51:56.529+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - Node [akka://simple-dev-1@127.0.1.1:39757] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:51:56.531+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:51:56.537+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - Leader is moving node [akka://simple-dev-1@127.0.1.1:39757] to [Up]
+2020-05-25T11:52:02.006+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56832
+2020-05-25T11:52:02.221+08:00 ERROR o.h.s.service-errors Error servicing request: GET /v1/deployments/1 from 127.0.0.1
+org.postgresql.util.PSQLException: 错误: 字段关联 "id" 是不明确的
+  位置：764
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at doobie.free.KleisliInterpreter$PreparedStatementInterpreter.$anonfun$executeQuery$2(kleisliinterpreter.scala:956)
+	at doobie.free.KleisliInterpreter.$anonfun$primitive$2(kleisliinterpreter.scala:112)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:87)
+	at cats.effect.internals.IORunLoop$.startCancelable(IORunLoop.scala:41)
+	at cats.effect.internals.IOBracket$BracketStart.run(IOBracket.scala:88)
+	at cats.effect.internals.Trampoline.cats$effect$internals$Trampoline$$immediateLoop(Trampoline.scala:67)
+	at cats.effect.internals.Trampoline.startLoop(Trampoline.scala:35)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.super$startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.$anonfun$startLoop$1(TrampolineEC.scala:89)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)
+	at cats.effect.internals.TrampolineEC$JVMTrampoline.startLoop(TrampolineEC.scala:89)
+	at cats.effect.internals.Trampoline.execute(Trampoline.scala:43)
+	at cats.effect.internals.TrampolineEC.execute(TrampolineEC.scala:42)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:69)
+	at cats.effect.internals.IOBracket$BracketStart.apply(IOBracket.scala:49)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:139)
+	at cats.effect.internals.IORunLoop$RestartCallback.signal(IORunLoop.scala:359)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:380)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:323)
+	at cats.effect.internals.IOShift$Tick.run(IOShift.scala:35)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-25T11:53:58.518+08:00 INFO  o.h.b.c.ServerChannel Closing NIO1 channel /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:53:58.519+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-25T11:53:58.519+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-25T11:53:58.519+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-25T11:53:58.529+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-25T11:53:58.535+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-25T11:53:58.538+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - Marked address [akka://simple-dev-1@127.0.1.1:39757] as [Leaving]
+2020-05-25T11:53:58.552+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-25T11:53:58.581+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-25T11:53:59.293+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - Leader is moving node [akka://simple-dev-1@127.0.1.1:39757] to [Exiting]
+2020-05-25T11:53:59.296+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - Exiting completed
+2020-05-25T11:53:59.297+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - Shutting down...
+2020-05-25T11:53:59.303+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:39757] - Successfully shut down
+2020-05-25T11:53:59.307+08:00 WARN  c.a.a.d.c.AkkaNodeDiscovererTyped received cluster event message: MemberRemoved(Member(address = akka://simple-dev-1@127.0.1.1:39757, status = Removed),Exiting)
+2020-05-25T11:53:59.325+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-25T11:53:59.326+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-25T11:53:59.327+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Member is Removed: akka://simple-dev-1@127.0.1.1:39757
+2020-05-25T11:53:59.358+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-25T11:53:59.382+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-25T11:54:28.932+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-25T11:54:29.190+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:36619] with UID [8673562016326147259]
+2020-05-25T11:54:29.208+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:36619] - Starting up, Akka version [2.6.5] ...
+2020-05-25T11:54:29.259+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:36619] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-25T11:54:29.260+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:36619] - Started up successfully
+2020-05-25T11:54:29.290+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:36619] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-25T11:54:29.291+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:36619] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-25T11:54:30.050+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-25T11:54:30.246+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-25T11:54:31.531+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-25T11:54:31.533+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@67cf5e89
+2020-05-25T11:54:31.933+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-25T11:54:31.934+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:36619
+2020-05-25T11:54:32.293+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-25T11:54:32.309+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Service bound to address /0:0:0:0:0:0:0:0:10000
+2020-05-25T11:54:32.316+08:00 INFO  o.h.s.b.BlazeServerBuilder 
+
+
+
+
+
+╔═╗╔╦╗╦ ╦  ╔╗ ┌─┐┌─┐┬┌─╔═╗┌┬┐┌─┐┌─┐┌─┐  ╔═╗┌─┐┬─┐┬  ┬┬┌─┐┌─┐
+╠═╣ ║║╚╦╝  ╠╩╗├─┤│  ├┴┐╚═╗ │ ├─┤│ ┬├┤   ╚═╗├┤ ├┬┘└┐┌┘││  ├┤
+╩ ╩═╩╝ ╩   ╚═╝┴ ┴└─┘┴ ┴╚═╝ ┴ ┴ ┴└─┘└─┘  ╚═╝└─┘┴└─ └┘ ┴└─┘└─┘
+
+
+
+
+
+
+
+2020-05-25T11:54:32.351+08:00 INFO  o.h.s.b.BlazeServerBuilder http4s v0.21.2 on blaze v0.14.11 started at http://[::]:10000/
+2020-05-25T11:54:33.945+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: Join
+2020-05-25T11:54:33.963+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped nodes: List(AkkaNode(simple-dev-1:0:05ebb633-6512-49e9-9b0a-639ee25301ff,simple-dev-1,127.0.1.1,127.0.1.1,36619,akka,0))
+2020-05-25T11:54:33.967+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining cluster. Target nodes: List(AkkaNode(simple-dev-1:0:05ebb633-6512-49e9-9b0a-639ee25301ff,simple-dev-1,127.0.1.1,127.0.1.1,36619,akka,0))
+2020-05-25T11:54:33.968+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Joining nodes: List(akka://simple-dev-1@127.0.1.1:36619)
+2020-05-25T11:54:34.001+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:36619] - Node [akka://simple-dev-1@127.0.1.1:36619] is JOINING itself (with roles [dc-default]) and forming new cluster
+2020-05-25T11:54:34.003+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:36619] - is the new leader among reachable nodes (more leaders may exist)
+2020-05-25T11:54:34.018+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:36619] - Leader is moving node [akka://simple-dev-1@127.0.1.1:36619] to [Up]
+2020-05-25T11:54:37.461+08:00 INFO  o.h.b.c.n.NIO1SocketServerGroup Accepted connection from /127.0.0.1:56890

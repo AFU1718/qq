@@ -1,0 +1,14 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/package.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/package.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/stats.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/stats.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/enums.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/api/project_deployment_record_api.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/api/project_deployment_record_api.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/api/user_info_api.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/api/user_info_api.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/api/project_api.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/api/project_api.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/api/role_api.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/api/role_api.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/api/project_group_api.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/api/project_group_api.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums/SellerCode.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/enums/SellerCode.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums/EventType.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/enums/EventType.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums/Status.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/enums/Status.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums/ValidType.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/enums/ValidType.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums/IdType.proto,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/classes/enums/IdType.proto)[0m

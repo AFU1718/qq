@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package com.zz.ady.idl;
+
+option optimize_for = SPEED;
+
+// 状态
+enum SellerCode {
+    DefaultSeller    = 0;
+    OPPO             = 1;
+    VIVO             = 2;
+    MEIZU            = 3;
+    XIAOMI           = 4;
+    HUAWEI           = 5;
+}

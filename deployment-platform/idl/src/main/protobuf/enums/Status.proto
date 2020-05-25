@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.zz.ady.idl;
+
+option optimize_for = SPEED;
+
+// 状态
+enum Status {
+    INACTIVE        = 0; // 默认，无效的
+    ACTIVE          = 1; // 正在使用，活跃的
+}

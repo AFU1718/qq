@@ -1,0 +1,114 @@
+2020-05-22T10:50:40.073+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-22T10:50:40.587+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:42729] with UID [-8910941674371672770]
+2020-05-22T10:50:40.609+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:42729] - Starting up, Akka version [2.6.5] ...
+2020-05-22T10:50:40.757+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:42729] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-22T10:50:40.757+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:42729] - Started up successfully
+2020-05-22T10:50:40.802+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:42729] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-22T10:50:40.804+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:42729] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-22T10:50:41.533+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-22T10:50:41.719+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-22T10:50:43.032+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-22T10:50:43.033+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@418df94f
+2020-05-22T10:50:43.396+08:00 ERROR a.i.TcpListener Bind failed for TCP channel on endpoint [/0.0.0.0:10002]
+java.net.BindException: [/0.0.0.0:10002] 地址已在使用
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:461)
+	at java.base/sun.nio.ch.Net.bind(Net.java:453)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:227)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:80)
+	at akka.io.TcpListener.liftedTree1$1(TcpListener.scala:60)
+	at akka.io.TcpListener.<init>(TcpListener.scala:57)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at akka.util.Reflect$.instantiate(Reflect.scala:70)
+	at akka.actor.ArgsReflectConstructor.produce(IndirectActorProducer.scala:101)
+	at akka.actor.Props.newActor(Props.scala:226)
+	at akka.actor.ActorCell.newActor(ActorCell.scala:611)
+	at akka.actor.ActorCell.create(ActorCell.scala:637)
+	at akka.actor.ActorCell.invokeAll$1(ActorCell.scala:511)
+	at akka.actor.ActorCell.systemInvoke(ActorCell.scala:533)
+	at akka.dispatch.Mailbox.processAllSystemMessages(Mailbox.scala:295)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:230)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:177)
+2020-05-22T10:50:43.442+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-22T10:50:43.443+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:42729
+2020-05-22T10:50:43.946+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-22T10:50:43.947+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-22T10:50:43.950+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-22T10:50:43.955+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-22T10:50:43.957+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-22T10:50:43.964+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-22T10:50:43.991+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-22T10:50:43.991+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-22T10:50:44.014+08:00 INFO  a.a.LocalActorRef Message [akka.cluster.ClusterUserAction$Leave] to Actor[akka://simple-dev-1/system/cluster/core/daemon#1170388749] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2020-05-22T10:50:44.014+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:42729] - Exiting completed
+2020-05-22T10:50:44.014+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:42729] - Shutting down...
+2020-05-22T10:50:44.015+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:42729] - Successfully shut down
+2020-05-22T10:50:44.020+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-22T10:50:44.023+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-22T10:50:44.092+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-22T10:50:44.126+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers
+2020-05-22T10:53:22.630+08:00 INFO  a.e.s.Slf4jLogger Slf4jLogger started
+2020-05-22T10:53:23.190+08:00 INFO  a.r.a.t.ArteryTcpTransport Remoting started with transport [Artery tcp]; listening on address [akka://simple-dev-1@127.0.1.1:32813] with UID [-5245016702921338341]
+2020-05-22T10:53:23.212+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:32813] - Starting up, Akka version [2.6.5] ...
+2020-05-22T10:53:23.363+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:32813] - Registered cluster JMX MBean [akka:type=Cluster]
+2020-05-22T10:53:23.363+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:32813] - Started up successfully
+2020-05-22T10:53:23.401+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:32813] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2020-05-22T10:53:23.402+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:32813] - No seed-nodes configured, manual cluster join required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#joining
+2020-05-22T10:53:24.080+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Starting...
+2020-05-22T10:53:24.288+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Start completed.
+2020-05-22T10:53:25.564+08:00 DEBUG c.t.s.a.AkkaSSLConfig Initializing AkkaSSLConfig extension...
+2020-05-22T10:53:25.565+08:00 DEBUG c.t.s.a.AkkaSSLConfig buildHostnameVerifier: created hostname verifier: com.typesafe.sslconfig.ssl.NoopHostnameVerifier@257d5e03
+2020-05-22T10:53:25.904+08:00 ERROR a.i.TcpListener Bind failed for TCP channel on endpoint [/0.0.0.0:10002]
+java.net.BindException: [/0.0.0.0:10002] 地址已在使用
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:461)
+	at java.base/sun.nio.ch.Net.bind(Net.java:453)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:227)
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:80)
+	at akka.io.TcpListener.liftedTree1$1(TcpListener.scala:60)
+	at akka.io.TcpListener.<init>(TcpListener.scala:57)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at akka.util.Reflect$.instantiate(Reflect.scala:70)
+	at akka.actor.ArgsReflectConstructor.produce(IndirectActorProducer.scala:101)
+	at akka.actor.Props.newActor(Props.scala:226)
+	at akka.actor.ActorCell.newActor(ActorCell.scala:611)
+	at akka.actor.ActorCell.create(ActorCell.scala:637)
+	at akka.actor.ActorCell.invokeAll$1(ActorCell.scala:511)
+	at akka.actor.ActorCell.systemInvoke(ActorCell.scala:533)
+	at akka.dispatch.Mailbox.processAllSystemMessages(Mailbox.scala:295)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:230)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:243)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:177)
+2020-05-22T10:53:25.983+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped received message: PublishSelf
+2020-05-22T10:53:25.983+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Publish self Akka Address akka://simple-dev-1@127.0.1.1:32813
+2020-05-22T10:53:26.397+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-0
+2020-05-22T10:53:26.398+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-1
+2020-05-22T10:53:26.399+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-2
+2020-05-22T10:53:26.402+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-3
+2020-05-22T10:53:26.407+08:00 INFO  o.h.b.c.n.SelectorLoop Shutting down SelectorLoop blaze-selector-4
+2020-05-22T10:53:26.411+08:00 INFO  c.a.a.d.c.AkkaNodeDiscovererTyped Waiting for other nodes for 2 seconds
+2020-05-22T10:53:26.420+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown initiated...
+2020-05-22T10:53:26.460+08:00 INFO  c.z.h.HikariDataSource HikariPool-1 - Shutdown completed.
+2020-05-22T10:53:26.485+08:00 INFO  a.a.LocalActorRef Message [akka.cluster.ClusterUserAction$Leave] to Actor[akka://simple-dev-1/system/cluster/core/daemon#-2107608701] was unhandled. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2020-05-22T10:53:26.486+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:32813] - Exiting completed
+2020-05-22T10:53:26.486+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:32813] - Shutting down...
+2020-05-22T10:53:26.489+08:00 INFO  a.c.Cluster Cluster Node [akka://simple-dev-1@127.0.1.1:32813] - Successfully shut down
+2020-05-22T10:53:26.506+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Shutting down remote daemon.
+2020-05-22T10:53:26.508+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remote daemon shut down; proceeding with flushing remote transports.
+2020-05-22T10:53:26.533+08:00 INFO  a.r.RemoteActorRefProvider$RemotingTerminator Remoting shut down.
+2020-05-22T10:53:26.543+08:00 DEBUG c.a.a.d.c.AkkaNodeDiscovererTyped Cancel all timers

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <target>System.out</target>
+    <encoder>
+        <pattern>%gray(%date{HH:mm:ss.SSS, Asia/Shanghai}) %highlight(%-5level) %cyan(%logger{1}) - %gray(%msg%n)</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="SPLASH" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%gray(%date{HH:mm:ss.SSS, Asia/Shanghai}) %highlight(%-5level) %cyan(%logger{1}) - %green(%msg%n)</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/${node:-0}/bench.log</file>
+    <level>INFO</level>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>logs/${node:-0}/bench.%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+      <maxHistory>60</maxHistory>
+    </rollingPolicy>
+    <encoder>
+        <pattern>%date{"yyyy-MM-dd'T'HH:mm:ss.SSS", Asia/Shanghai} %-5level %logger{1} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="slick" level="INFO"/>
+  <logger name="com.zaxxer.hikari" level="INFO"/>
+  <logger name="org.apache.kafka" level="INFO"/>
+  <logger name="akka" level="INFO"/>
+  <logger name="org.http4s" level="INFO"/>
+  <logger name="io.grpc.netty.shaded" level="INFO" />
+  <logger name="com.datastax.driver" level="INFO" />
+  <logger name="io.getquill.CassandraAsyncContext" level="INFO" />
+  <logger name="org.apache.pulsar" level="INFO" />
+  <logger name="com.sksamuel.pulsar4s" level="INFO" />
+  <logger name="io.netty.util.internal" level="INFO" />
+  <logger name="com.zz.ady.streaming.dao.StatsASql" level="DEBUG" />
+
+  <logger name="MainSplash" additivity="false">
+    <appender-ref ref="ROLLING_FILE"/>
+    <appender-ref ref="SPLASH"/>
+  </logger>
+
+  <root level="${akka.loglevel:-INFO}">
+    <appender-ref ref="ROLLING_FILE"/>
+    <appender-ref ref="CONSOLE"/>
+  </root>
+
+</configuration>

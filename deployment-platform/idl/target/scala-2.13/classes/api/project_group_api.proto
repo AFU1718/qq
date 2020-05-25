@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+
+package com.zz.ady.idl;
+
+import "scalapb/scalapb.proto";
+import "google/protobuf/wrappers.proto";
+import "enums.proto";
+
+// 项目组
+message ProjectGroup {
+  int32            id = 1;                   // 项目组id
+  string           project_group_name = 2;   // 项目组名称
+  string           note = 3;                 // 备注
+  int32            created_by = 4;           // 创建人id
+  int32            updated_by = 5;           // 最近更新人id
+  string           created_at = 6;           // 创建时间
+  string           updated_at = 7;           // 最近更新时间
+  int32            is_deleted = 8;           // 删除标记
+}
+
+// 项目组列表
+message ProjectGroupList {
+  int32                           count = 1;                           // 总数
+  int32                           index = 2;                           // 页码索引
+  int32                           page_size = 3;                       // 每页大小
+  int32                           size = 4;                            // 共多少页
+  repeated ReturnProjectGroup     return_project_group_list = 5;       // 项目组列表
+}
+
+// 新建项目组
+message PostProjectGroup {
+  string           project_group_name = 1;   // 项目组名称
+  string           note = 2;                 // 备注
+  int32            created_by = 3;           // 创建人id
+  int32            updated_by = 4;           // 最近更新人id
+}
+
+// 项目组列表返回
+message ReturnProjectGroup {
+  int32            id = 1;                   // 项目组id
+  string           project_group_name = 2;   // 项目组名称
+  string           note = 3;                 // 备注
+  string           creator = 4;              // 创建人
+  string           updater = 5;              // 最近更新人
+  string           created_at = 6;           // 创建时间
+  string           updated_at = 7;           // 最近更新时间
+  int32            is_deleted = 8;           // 删除标记
+}
+

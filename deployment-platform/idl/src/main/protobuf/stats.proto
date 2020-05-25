@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package com.zz.ady.idl;
+
+option optimize_for = SPEED;
+
+import "scalapb/scalapb.proto";
+import "enums.proto";
+
+option (scalapb.options) = {
+  collection_type: "Vector"
+};
+
+message StatsA {
+    int64            ts                   = 1001 [(scalapb.field).type = "java.time.Instant"];   // 事件时间
+    int64            updated_at           = 1003 [(scalapb.field).type = "java.time.Instant"];   // 更新时间
+    PlacementType    placement_type       = 2010;   // 广告位类型
+    ValidType        validType            = 2020;   // 事件有效性
+    SellerCode       seller_code          = 2030;   // 卖方类型, 渠道
+    TradingType      seller_trading_type  = 2040;   // 与卖方之间的交易类型
+    TradingType      buyer_trading_type   = 2050;   // 与买方之间的交易类型
+    DealType         seller_deal_type     = 2060;   // 与卖方之间的结算类型
+    DealType         buyer_deal_type      = 2070;   // 与买方之间的结算类型
+    OSType           os_type              = 2080;   // 设备操作系统类型
+    DropType         drop_type            = 2090;   // ADX 丢弃类型
+    InterceptionType interception_type    = 2100;   // ADX 拦截类型
+    int32            dsp_id               = 3010;   // dsp id
+    int32            dsp_app_id           = 3020;   // dsp app id
+    int32            dsp_app_placement_id = 3040;   // dsp app placement id
+    int32            pub_id               = 3050;   // pub id
+    int32            pub_app_id           = 3060;   // pub app id
+    int32            pub_app_placement_id = 3070;   // pub app placement id
+    int64            adx_cost_in_micro    = 4010;   // ADX 成本, 微元
+    int64            adx_revenue_in_micro = 4020;   // ADX 收益, 微元
+    int64            events               = 7000;   // 事件条数
+    int64            seller_request       = 7010;   // 流量端请求
+    int64            adx_intercept        = 7020;   // ADX 对流量断请求的拦截
+    int64            to_buyer_request     = 7030;   // adx 对 dsp 竞价请求
+    int64            buyer_bid            = 7040;   // 买家对 adx 出价
+    int64            buyer_no_bid         = 7050;   // 买家对 adx 明确不出价, eg: 204
+    int64            buyer_timeout        = 7060;   // 买家响应超时
+    int64            buyer_error          = 7070;   // 买家有响应，但是有错误
+    int64            adx_bid              = 7080;   // adx 对卖家
+    int64            adx_no_bid           = 7090;   // adx 对卖家不出价
+    int64            adx_drop             = 7100;   // adx 丢弃买家的出价
+    int64            win_notice           = 7110;   // adx 收到的竞价成功反馈
+    int64            impression           = 7120;   // 展示
+    int64            click                = 7130;   // 点击
+    int64            download_started     = 7140;   // 下载开始
+    int64            download_completed   = 7150;   // 下载完成
+    int64            install_started      = 7160;   // 安装开始
+    int64            install_completed    = 7170;   // 安装完成
+    int64            video_start          = 7181;   // 开始播放
+    int64            video_end            = 7183;   // 播放完成
+    int64            video_click          = 7185;   // 点击视频
+    int64            video_close          = 7187;   // 关闭视频
+    int64            video_skip           = 7189;   // 跳过视频
+}
+
+message StatsAs {
+    int64           ts    = 10 [(scalapb.field).type = "java.time.Instant"];
+    repeated StatsA stats = 20;
+}

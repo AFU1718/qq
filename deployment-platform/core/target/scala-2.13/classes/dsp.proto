@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+package com.zz.ady.backstage.idl;
+
+option optimize_for = SPEED;
+
+import "scalapb/scalapb.proto";
+import "google/protobuf/wrappers.proto";
+import "enums.proto";
+
+option (scalapb.options) = {
+  // scope: PACKAGE
+  // collection_type: "Vector"
+  preserve_unknown_fields: false
+};
+
+message DspUpdateForm {
+    string                      name                    = 1;            //
+    int32                       code                    = 2;
+    Status                      status                  = 3;            // 状态
+}
+
+message DspAppUpdateForm {
+    int32                       dsp_id                  = 1;
+    string                      name                    = 2;
+    Bool                        is_zz_api               = 3;            //
+    string                      url                     = 4;
+    int32                       lowest                  = 5;
+    string                      pkg                     = 6;
+    string                      pkg_version             = 7;
+    string                      pkg_version_name        = 8;
+    string                      dsp_app_key             = 9;
+}
+
+message DspAppPlacementUpdateForm {
+    int32                       dsp_id                  = 1;
+    int32                       dsp_app_id              = 2;
+    string                      name                    = 3;
+    PlacementType               placement_type          = 4;
+    string                      placement_id            = 5;
+    string                      effective_time          = 6;
+    int64                       imp_cap                 = 7;
+}
+
+// 查询单个DSP返回
+message QueryDspResult {
+    int32                       id                      = 1;            // ID
+    string                      name                    = 2;            //
+    string                      code                    = 3;            //
+    Status                      status                  = 4;            // 状态
+}
+
+// 查询单个DSP应用返回
+message QueryDspAppResult {
+    int32                       id                      = 1;            // ID
+    string                      name                    = 2;            //
+    int32                       dsp_id                  = 3;            //
+    Bool                        is_zz_api               = 4;            //
+    string                      url                     = 5;
+    int32                       lowest                  = 6;            //
+    string                      pkg                     = 7;            //
+    string                      pkg_version             = 8;            //
+    string                      pkg_version_name        = 9;            //
+    string                      dsp_app_key             = 10;            //
+}
+
+// 查询单个DSP应用广告位返回
+message QueryDspAppPlacementResult {
+    int32                       id                      = 1;            // ID
+    int32                       dsp_id                  = 2;            //
+    int32                       dsp_app_id              = 3;            //
+    string                      name                    = 4;            //
+    PlacementType               placement_type          = 5;            //
+    string                      placement_id            = 6;
+    string                      effective_time          = 7;
+    int64                       imp_cap                 = 8;
+}
+
+message QueryDspListResponse {
+    int32                       index                       = 1;            // 当前页
+    int32                       page_size                   = 2;            // 每页条数
+    int32                       count                       = 3;            // 总条数
+    int32                       size                        = 4;            // 总页数
+    repeated QueryDspListResult list                        = 5;            // 列表
+}
+
+// 查询DSP列表返回
+message QueryDspListResult {
+    int32                       id                      = 1;            // ID
+    string                      name                    = 2;            //
+    string                      code                    = 3;
+    Status                      status                  = 4;            // 状态
+//    int64                       created_at              = 4 [(scalapb.field).type = "java.time.Instant"];       // 创建时间
+}
+
+message QueryDspAppListResponse {
+    int32                       index                       = 1;            // 当前页
+    int32                       page_size                   = 2;            // 每页条数
+    int32                       count                       = 3;            // 总条数
+    int32                       size                        = 4;            // 总页数
+    repeated QueryDspAppListResult list                        = 5;            // 列表
+}
+
+// 查询DSP应用列表返回
+message QueryDspAppListResult {
+    int32                       id                      = 1;            // ID
+    string                      name                    = 2;            //
+    string                      dsp_name                = 3;            //
+    int32                       lowest                  = 4;            //
+    Status                      status                  = 5;            // 状态
+}
+
+message QueryDspAppPlacementListResponse {
+    int32                       index                       = 1;            // 当前页
+    int32                       page_size                   = 2;            // 每页条数
+    int32                       count                       = 3;            // 总条数
+    int32                       size                        = 4;            // 总页数
+    repeated QueryDspAppPlacementListResult list                        = 5;            // 列表
+}
+
+// 查询DSP应用广告位列表返回
+message QueryDspAppPlacementListResult {
+    int32                       id                      = 1;            // ID
+    string                      placement_id            = 2;
+    string                      name                    = 3;            //
+    PlacementType               placement_type          = 4;            //
+    string                      dsp_app_name            = 5;            //
+    string                      dsp_name                = 6;            //
+    Status                      status                  = 7;            // 状态
+}
+
+// 查询DSP列表表单
+message QueryDspListForm {
+    google.protobuf.StringValue name                    = 1;            //
+    google.protobuf.Int32Value  status                  = 2;
+    google.protobuf.Int32Value  index                   = 3;            // 第几页
+    google.protobuf.Int32Value  page_size               = 4;            // 每页条数
+}
+
+// 查询DSP应用列表表单
+message QueryDspAppListForm {
+    google.protobuf.Int32Value  dsp_id                  = 1;
+    google.protobuf.StringValue name                    = 2;            //
+    google.protobuf.Int32Value  status                  = 3;
+    google.protobuf.Int32Value  is_zz_api               = 4;
+    google.protobuf.Int32Value  index                   = 5;            // 第几页
+    google.protobuf.Int32Value  page_size               = 6;            // 每页条数
+}
+
+// 查询DSP应用广告位列表表单
+message QueryDspAppPlacementListForm {
+    google.protobuf.StringValue placement_id            = 1;
+    google.protobuf.StringValue name                    = 2;
+    google.protobuf.Int32Value  placement_type          = 3;
+    google.protobuf.Int32Value  dsp_id                  = 4;
+    google.protobuf.Int32Value  dsp_app_id              = 5;
+    google.protobuf.Int32Value  status                  = 6;
+    google.protobuf.Int32Value  index                   = 7;            // 第几页
+    google.protobuf.Int32Value  page_size               = 8;            // 每页条数
+}
+

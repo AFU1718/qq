@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package com.zz.ady.idl;
+
+option optimize_for = SPEED;
+
+enum IdType {
+    UNKNOWN_ID_TYPE = 0;
+    ZID             = 1;
+    IMEI            = 2;
+    IMEI_MD5        = 3;
+    IMEI_SHA1       = 4;
+    IMSI            = 5;
+    IMSI_MD5        = 6;
+    IMSI_SHA1       = 7;
+    ANDROID_ID      = 8;
+    ANDROID_ID_MD5  = 9;
+    ANDROID_ID_SHA1 = 10;
+    MAC             = 11;
+    MAC_MD5         = 12;
+    MAC_SHA1        = 13;
+    SN              = 14;
+    IDFA            = 15;
+    IDFV            = 16;
+    MID             = 17;
+    OAID            = 18;
+    OAID_MD5        = 19;
+    OAID_SHA1       = 20;
+}

@@ -1,0 +1,11 @@
+[0m[[0m[0minfo[0m] [0m[0mCompiling 4 protobuf files to /home/fubeixian/projects/deployment-platform/core/target/scala-2.13/src_managed/main,/home/fubeixian/projects/deployment-platform/core/target/scala-2.13/src_managed/main,/home/fubeixian/projects/deployment-platform/core/target/scala-2.13/src_managed/main,/home/fubeixian/projects/deployment-platform/core/target/scala-2.13/src_managed/main[0m
+[0m[[0m[0mdebug[0m] [0m[0mprotoc options:[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/core/src/main/protobuf/enums.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/core/src/main/protobuf/common.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/core/src/main/protobuf/pub.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/core/src/main/protobuf/dsp.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling protobuf[0m
+[0m[[0m[0minfo[0m] [0m[0mProtoc target: /home/fubeixian/projects/deployment-platform/core/target/scala-2.13/src_managed/main[0m
+[0m[[0m[0minfo[0m] [0m[0mProtoc target: /home/fubeixian/projects/deployment-platform/core/target/scala-2.13/src_managed/main[0m
+[0m[[0m[0minfo[0m] [0m[0mProtoc target: /home/fubeixian/projects/deployment-platform/core/target/scala-2.13/src_managed/main[0m
+[0m[[0m[0minfo[0m] [0m[0mProtoc target: /home/fubeixian/projects/deployment-platform/core/target/scala-2.13/src_managed/main[0m

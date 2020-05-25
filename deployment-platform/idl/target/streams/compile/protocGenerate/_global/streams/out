@@ -1,0 +1,20 @@
+[0m[[0m[0minfo[0m] [0m[0mCompiling 13 protobuf files to /home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/src_managed/main,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/src_managed/main,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/src_managed/main,/home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/src_managed/main[0m
+[0m[[0m[0mdebug[0m] [0m[0mprotoc options:[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums/ValidType.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/api/role_api.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums/SellerCode.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums/EventType.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/api/project_group_api.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/api/user_info_api.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/package.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/api/project_deployment_record_api.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/api/project_api.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/stats.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums/IdType.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling schema /home/fubeixian/projects/deployment-platform/idl/src/main/protobuf/enums/Status.proto[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling protobuf[0m
+[0m[[0m[0minfo[0m] [0m[0mProtoc target: /home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/src_managed/main[0m
+[0m[[0m[0minfo[0m] [0m[0mProtoc target: /home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/src_managed/main[0m
+[0m[[0m[0minfo[0m] [0m[0mProtoc target: /home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/src_managed/main[0m
+[0m[[0m[0minfo[0m] [0m[0mProtoc target: /home/fubeixian/projects/deployment-platform/idl/target/scala-2.13/src_managed/main[0m

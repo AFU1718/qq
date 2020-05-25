@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option optimize_for = SPEED;
+
+package com.zz.ady.idl;
+
+import "scalapb/scalapb.proto";
+import "google/protobuf/wrappers.proto";
+import "enums.proto";
+
+// 角色
+message Role {
+  int32            id = 1;              // 角色id
+  string           role_name=2;         // 角色名
+  string           note = 3;            // 备注
+  string           created_at = 4;      // 创建时间
+  string           updated_at = 5;      // 最近更新时间
+  int32            is_deleted = 6;      // 删除标记
+}
+
+// 角色列表
+message RoleList {
+  int32                           count = 1;                     // 总数
+  int32                           index = 2;                     // 页码索引
+  int32                           page_size = 3;                 // 每页大小
+  int32                           size = 4;                      // 共多少页
+  repeated Role                   role_list = 5;                 // 角色列表
+}
+
+// 新建角色
+message PostRole {
+  string           role_name=1;         // 角色名
+  string           note = 2;            // 备注
+}
+

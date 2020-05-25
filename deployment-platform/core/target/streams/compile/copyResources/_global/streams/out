@@ -1,0 +1,8 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/core/src/main/protobuf/enums.proto,/home/fubeixian/projects/deployment-platform/core/target/scala-2.13/classes/enums.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/core/src/main/protobuf/common.proto,/home/fubeixian/projects/deployment-platform/core/target/scala-2.13/classes/common.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/core/src/main/protobuf/pub.proto,/home/fubeixian/projects/deployment-platform/core/target/scala-2.13/classes/pub.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/core/src/main/protobuf/dsp.proto,/home/fubeixian/projects/deployment-platform/core/target/scala-2.13/classes/dsp.proto)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/core/src/main/resources/issue.txt,/home/fubeixian/projects/deployment-platform/core/target/scala-2.13/classes/issue.txt)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/core/src/main/resources/logback.xml,/home/fubeixian/projects/deployment-platform/core/target/scala-2.13/classes/logback.xml)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/fubeixian/projects/deployment-platform/core/src/main/resources/application.conf,/home/fubeixian/projects/deployment-platform/core/target/scala-2.13/classes/application.conf)[0m

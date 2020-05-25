@@ -1,0 +1,5 @@
+[0m[[0m[31merror[0m] [0m[0m/home/fubeixian/projects/deployment-platform/dal/src/main/scala/com/zz/ady/dal/dao/RoleSql.scala:57:26: value updatedBy is not a member of com.zz.ady.idl.Role[0m
+[0m[[0m[31merror[0m] [0m[0mdid you mean updatedAt?[0m
+[0m[[0m[31merror[0m] [0m[0m    val updatedBy = role.updatedBy[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
