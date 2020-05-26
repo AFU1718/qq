@@ -6,7 +6,7 @@ import cats.effect.Effect
 import cats.implicits._
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.service.RoleService
-import com.zz.ady.idl.{PostRole, Role, RoleList}
+import com.zz.ady.idl.{PostRole, Role, RoleList, RoleNameAndIdList}
 //import com.zz.ady.dal.model.Role
 import org.http4s.{HttpRoutes, Request, Response}
 import doobie.util.transactor.Transactor
@@ -25,11 +25,11 @@ class RoleApi[F[_]](xa: Transactor[F])(implicit val F: Effect[F], val system: Ac
 
   private val service: RoleService[F] = RoleService[F](xa)
 
-  private[this] object IdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("id")
+//  private[this] object IdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("id")
 
   private[this] object RoleNameQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("roleName")
 
-  private[this] object IsDeletedQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("isDeleted")
+//  private[this] object IsDeletedQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("isDeleted")
 
   private[this] object PageNoQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageNo")
 
@@ -83,17 +83,27 @@ class RoleApi[F[_]](xa: Transactor[F])(implicit val F: Effect[F], val system: Ac
 
   def queryRoleR: HttpRoutes[F] = {
     HttpRoutes.of[F] {
-      case GET -> Root / "v1" / "roles" :? IdQueryParamMatcher(id) :? RoleNameQueryParamMatcher(roleName)
-        :? IsDeletedQueryParamMatcher(isDeleted) :? PageNoQueryParamMatcher(pageNo) :? PageSizeQueryParamMatcher(pageSize) =>
+      case GET -> Root / "v1" / "roles" :? RoleNameQueryParamMatcher(roleName)
+        :? PageNoQueryParamMatcher(pageNo) :? PageSizeQueryParamMatcher(pageSize) =>
         val result: F[Pretty[RoleList]] = for {
-          r <- service.queryRole(id.getOrElse(-1), roleName.getOrElse(""), isDeleted.getOrElse(-1), pageNo.getOrElse(1), pageSize.getOrElse(10))
+          r <- service.queryRole(roleName.getOrElse(""), pageNo.getOrElse(1), pageSize.getOrElse(10))
         } yield Pretty(r)
         result.flatMap(Ok(_))
 
     }
   }
 
-  override val publicR: HttpRoutes[F] = findRoleByIdR <+> createRoleR <+> deleteRoleR <+> updateRoleR <+> queryRoleR
+  def findAllRoleR: HttpRoutes[F] = {
+    HttpRoutes.of[F] {
+      case GET -> Root / "v1" / "roles" / "nameAndId" =>
+        val result: F[Pretty[RoleNameAndIdList]] = for {
+          r <- service.findAllRole()
+        } yield Pretty(r)
+        result.flatMap(Ok(_))
+
+    }
+  }
+  override val publicR: HttpRoutes[F] = findRoleByIdR <+> createRoleR <+> deleteRoleR <+> updateRoleR <+> queryRoleR <+> findAllRoleR
 
 
 }

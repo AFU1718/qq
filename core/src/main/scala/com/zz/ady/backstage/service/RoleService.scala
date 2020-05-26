@@ -6,7 +6,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.config.AppConfig
 import com.zz.ady.dal.dao.RoleDAO
-import com.zz.ady.idl.{PostRole, Role, RoleList}
+import com.zz.ady.idl.{PostRole, Role, RoleList, RoleNameAndIdList}
 //import com.zz.ady.dal.model.Role
 import doobie.util.transactor.Transactor
 
@@ -44,10 +44,10 @@ class RoleService[F[_] : Effect](xa: Transactor[F]) {
     } yield a
   }
 
-  def queryRole(id: Int, roleName: String, isDeleted: Int, pageNo: Int, pageSize: Int): F[RoleList] = {
+  def queryRole(roleName: String, pageNo: Int, pageSize: Int): F[RoleList] = {
     for {
-      roleList <-  roleDAO.queryRole(id, roleName, isDeleted, pageNo, pageSize)
-      count <- roleDAO.countRole(id, roleName, isDeleted)
+      roleList <-  roleDAO.queryRole(roleName, pageNo, pageSize)
+      count <- roleDAO.countRole(roleName)
     } yield {
       RoleList(
         count = count,
@@ -58,6 +58,16 @@ class RoleService[F[_] : Effect](xa: Transactor[F]) {
       )
     }
 
+  }
+
+  def findAllRole(): F[RoleNameAndIdList] ={
+    for {
+      roleNameAndIdList <- roleDAO.findAllRole()
+    } yield {
+      RoleNameAndIdList(
+        roleNameAndIdList = roleNameAndIdList.toList
+      )
+    }
   }
 
   def findRoleById(id: Int): F[Option[Role]] = {

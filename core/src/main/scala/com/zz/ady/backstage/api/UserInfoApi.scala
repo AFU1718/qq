@@ -6,7 +6,7 @@ import cats.effect.Effect
 import cats.implicits._
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.service.UserInfoService
-import com.zz.ady.idl.{PostUserInfo, ReturnUserInfo, UserInfo, UserInfoList}
+import com.zz.ady.idl.{PostUserInfo, ReturnUserInfo, UserInfo, UserInfoList, UserInfoNameAndIdList}
 //import com.zz.ady.dal.model.UserInfo
 import org.http4s.{HttpRoutes, Request, Response}
 import doobie.util.transactor.Transactor
@@ -25,7 +25,7 @@ class UserInfoApi[F[_]](xa: Transactor[F])(implicit val F: Effect[F], val system
 
   private val service: UserInfoService[F] = UserInfoService[F](xa)
 
-  private[this] object IdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("id")
+//  private[this] object IdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("id")
 
   private[this] object nameQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("name")
 
@@ -33,7 +33,7 @@ class UserInfoApi[F[_]](xa: Transactor[F])(implicit val F: Effect[F], val system
 
   private[this] object RoleNameQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("roleName")
 
-  private[this] object IsDeletedQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("isDeleted")
+//  private[this] object IsDeletedQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("isDeleted")
 
   private[this] object PageNoQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageNo")
 
@@ -88,19 +88,29 @@ class UserInfoApi[F[_]](xa: Transactor[F])(implicit val F: Effect[F], val system
 
   def queryUserInfoR: HttpRoutes[F] = {
     HttpRoutes.of[F] {
-      case GET -> Root / "v1" / "userInfo" :? IdQueryParamMatcher(id) :? nameQueryParamMatcher(name)
+      case GET -> Root / "v1" / "userInfo" :? nameQueryParamMatcher(name)
         :? RoleIdQueryParamMatcher(roleId) :? RoleNameQueryParamMatcher(roleName)
-        :? IsDeletedQueryParamMatcher(isDeleted)
         :? PageNoQueryParamMatcher(pageNo) :? PageSizeQueryParamMatcher(pageSize) =>
         val result: F[Pretty[UserInfoList]] = for {
-          r <- service.queryUserInfo(id.getOrElse(-1), name.getOrElse(""),roleId.getOrElse(-1), roleName.getOrElse(""), isDeleted.getOrElse(-1), pageNo.getOrElse(1), pageSize.getOrElse(10))
+          r <- service.queryUserInfo(name.getOrElse(""),roleId.getOrElse(-1), roleName.getOrElse(""), pageNo.getOrElse(1), pageSize.getOrElse(10))
         } yield Pretty(r)
         result.flatMap(Ok(_))
 
     }
   }
 
-  override val publicR: HttpRoutes[F] = findUserInfoByIdR <+> createUserInfoR <+> deleteUserInfoR <+> updateUserInfoR <+> queryUserInfoR
+  def findAllUserInfoR: HttpRoutes[F] = {
+    HttpRoutes.of[F] {
+      case GET -> Root / "v1" / "userInfo" / "nameAndId" =>
+        val result: F[Pretty[UserInfoNameAndIdList]] = for {
+          r <- service.findAllUserInfo()
+        } yield Pretty(r)
+        result.flatMap(Ok(_))
+
+    }
+  }
+
+  override val publicR: HttpRoutes[F] = findUserInfoByIdR <+> createUserInfoR <+> deleteUserInfoR <+> updateUserInfoR <+> queryUserInfoR <+> findAllUserInfoR
 
 
 }

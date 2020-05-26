@@ -6,16 +6,14 @@ GET `/v1/projects`
 
 请求参数
 
-| 参数名           | 参数定义   | 类型   | 说明                 | 必填id |
-| ---------------- | ---------- | ------ | -------------------- | ------ |
-| id               | 项目id     | int    |                      | n      |
-| projectGroupId   | 项目组id   | int    |                      | n      |
-| projectGroupName | 项目组名称 | string | 模糊查询             | n      |
-| projectName      | 项目名称   | string | 模糊查询             | n      |
-| projectType      | 项目类型   | string |                      | n      |
-| isDeleted        | 删除标记   | int    | 0是未删除，1是已删除 | n      |
-| pageNo           | 第几页     | int    | 默认是1              | n      |
-| pageSize         | 页数       | int    | 默认是10             | n      |
+| 参数名           | 参数定义   | 类型   | 说明     | 必填id |
+| ---------------- | ---------- | ------ | -------- | ------ |
+| projectGroupId   | 项目组id   | int    |          | n      |
+| projectGroupName | 项目组名称 | string | 模糊查询 | n      |
+| projectName      | 项目名称   | string | 模糊查询 | n      |
+| projectType      | 项目类型   | string |          | n      |
+| pageNo           | 第几页     | int    | 默认是1  | n      |
+| pageSize         | 页数       | int    | 默认是10 | n      |
 
 响应
 
@@ -29,7 +27,7 @@ GET `/v1/projects`
 
 #### Request
 
-**GET** /v1/projects?id=1&projectGroupId=1&projectGroupName=project&projectName=project&projectType=scala&isDeleted=0&pageNo=1&pageSize=10
+**GET** /v1/projects?projectGroupId=1&projectGroupName=project&projectName=project&projectType=scala&pageNo=1&pageSize=10
 
 #### Response
 
@@ -281,3 +279,56 @@ PUT /v1/projects
 }
 ```
 
+
+
+## 获取全部项目（不分页）
+
+GET /v1/projects/nameAndId
+
+请求参数
+
+无
+
+响应
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| status  | 状态     | int    | 0: 成功，1: 失败 | y    |
+| data    | 响应数据 |        | 见示例           | n    |
+| message | 错误消息 | String |                  | n    |
+
+示例
+
+#### Request
+
+**GET** /v1/projects/nameAndId
+
+#### Response
+
+```json
+{
+    "data": {
+        "projectNameAndIdList": [
+            {
+                "projectName": "project hjhjd",
+                "projectId": 4
+            },
+            {
+                "projectName": "project hq",
+                "projectId": 3
+            },
+            {
+                "projectName": "project2",
+                "projectId": 2
+            },
+            {
+                "projectName": "project1",
+                "projectId": 1
+            }
+        ]
+    },
+    "status": 0
+}
+```
+
+## 

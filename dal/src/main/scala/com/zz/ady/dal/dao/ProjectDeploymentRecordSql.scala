@@ -96,12 +96,12 @@ trait ProjectDeploymentRecordSql extends Sql {
         """.stripMargin ++ whereAndOpt(f1)).update
   }
 
-  def queryProjectDeploymentRecordSql(id: Int, projectId: Int, projectName: String, status: Int, isDeleted: Int, pageNo: Int, pageSize: Int
+  def queryProjectDeploymentRecordSql(projectId: Int, projectName: String, status: Int, pageNo: Int, pageSize: Int
                                      ): doobie.Query0[ReturnProjectDeploymentRecord] = {
     val offset = pageNo * pageSize - pageSize
-    val f1 = Option(id).map(v => {
-      if (v == -1) fr"1=1" else fr"pdr.id = $v"
-    })
+//    val f1 = Option(id).map(v => {
+//      if (v == -1) fr"1=1" else fr"pdr.id = $v"
+//    })
     val f2 = Option(projectId).map(v => {
       if (v == -1) fr"1=1" else fr"pdr.project_id = $v"
     })
@@ -111,9 +111,7 @@ trait ProjectDeploymentRecordSql extends Sql {
     val f4 = Option(status).map(v => {
       if (v == -1) fr"1=1" else fr"pdr.status = $v"
     })
-    val f5 = Option(isDeleted).map(v => {
-      if (v == -1) fr"1=1" else fr"pdr.is_deleted = $v"
-    })
+    val f5= Option(0).map(v => fr"pdr.is_deleted = $v")
 
     val q =
       fr"""SELECT
@@ -135,15 +133,15 @@ trait ProjectDeploymentRecordSql extends Sql {
                   pdr.is_deleted
               FROM project_deployment_record pdr left join user_info u1 on pdr.created_by = u1.id
               left join user_info u2 on pdr.updated_by = u2.id left join project p on pdr.project_id = p.id
-              """.stripMargin ++ whereAndOpt(f1, f2, f3, f4, f5) ++
+              """.stripMargin ++ whereAndOpt(f2, f3, f4, f5) ++
         Fragment.const(s" order by pdr.created_at desc offset $offset limit $pageSize")
     q.query[ReturnProjectDeploymentRecord]
   }
 
-  def countProjectDeploymentRecordSql(id: Int, projectId: Int, projectName: String, status: Int, isDeleted: Int): doobie.Query0[Int] = {
-    val f1 = Option(id).map(v => {
-      if (v == -1) fr"1=1" else fr"pdr.id = $v"
-    })
+  def countProjectDeploymentRecordSql(projectId: Int, projectName: String, status: Int): doobie.Query0[Int] = {
+//    val f1 = Option(id).map(v => {
+//      if (v == -1) fr"1=1" else fr"pdr.id = $v"
+//    })
     val f2 = Option(projectId).map(v => {
       if (v == -1) fr"1=1" else fr"pdr.project_id = $v"
     })
@@ -153,15 +151,13 @@ trait ProjectDeploymentRecordSql extends Sql {
     val f4 = Option(status).map(v => {
       if (v == -1) fr"1=1" else fr"pdr.status = $v"
     })
-    val f5 = Option(isDeleted).map(v => {
-      if (v == -1) fr"1=1" else fr"pdr.is_deleted = $v"
-    })
+    val f5= Option(0).map(v => fr"pdr.is_deleted = $v")
 
     val q =
       fr"""SELECT
                     count(pdr.id)
                  FROM project_deployment_record pdr left join project p on pdr.project_id = p.id
-              """.stripMargin ++ whereAndOpt(f1, f2, f3, f4, f5)
+              """.stripMargin ++ whereAndOpt(f2, f3, f4, f5)
     q.query[Int]
   }
 

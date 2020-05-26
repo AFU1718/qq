@@ -2,7 +2,7 @@ package com.zz.ady.dal.dao
 
 
 import com.typesafe.scalalogging.Logger
-import com.zz.ady.idl.{Project, ReturnProject}
+import com.zz.ady.idl.{Project, ProjectNameAndId, ReturnProject}
 //import com.zz.ady.dal.model.Project
 import doobie.implicits._
 import doobie.postgres.implicits._
@@ -77,12 +77,12 @@ trait ProjectSql extends Sql {
         """.stripMargin ++ whereAndOpt(f1)).update
   }
 
-  def queryProjectSql(id: Int, projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String, isDeleted: Int, pageNo: Int, pageSize: Int
+  def queryProjectSql(projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String, pageNo: Int, pageSize: Int
                           ): doobie.Query0[ReturnProject] = {
     val offset = pageNo * pageSize - pageSize
-    val f1 = Option(id).map(v => {
-      if (v == -1) fr"1=1" else fr"p.id = $v"
-    })
+//    val f1 = Option(id).map(v => {
+//      if (v == -1) fr"1=1" else fr"p.id = $v"
+//    })
     val f2 = Option(projectGroupId).map(v => {
       if (v == -1) fr"1=1" else fr"p.project_group_id = $v"
     })
@@ -95,9 +95,7 @@ trait ProjectSql extends Sql {
     val f5 = Option(projectType).map(v => {
       if ("" equals v) fr"1=1" else fr"p.project_type = $v"
     })
-    val f6 = Option(isDeleted).map(v => {
-      if (v == -1) fr"1=1" else fr"p.is_deleted = $v"
-    })
+    val f6 = Option(0).map(v => fr"p.is_deleted = $v")
 
     val q =
       fr"""SELECT
@@ -114,15 +112,15 @@ trait ProjectSql extends Sql {
               p.is_deleted
            FROM project p left join user_info u1 on p.created_by = u1.id left join user_info u2 on p.updated_by = u2.id
            left join project_group pg on p.project_group_id = pg.id
-           """.stripMargin ++ whereAndOpt(f1, f2, f3, f4, f5, f6) ++
-        Fragment.const(s" order by created_at desc offset $offset limit $pageSize")
+           """.stripMargin ++ whereAndOpt( f2, f3, f4, f5, f6) ++
+        Fragment.const(s" order by p.created_at desc offset $offset limit $pageSize")
     q.query[ReturnProject]
   }
 
-  def countProjectSql(id: Int, projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String, isDeleted: Int): doobie.Query0[Int] = {
-    val f1 = Option(id).map(v => {
-      if (v == -1) fr"1=1" else fr"p.id = $v"
-    })
+  def countProjectSql(projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String): doobie.Query0[Int] = {
+//    val f1 = Option(id).map(v => {
+//      if (v == -1) fr"1=1" else fr"p.id = $v"
+//    })
     val f2 = Option(projectGroupId).map(v => {
       if (v == -1) fr"1=1" else fr"p.project_group_id = $v"
     })
@@ -135,15 +133,26 @@ trait ProjectSql extends Sql {
     val f5 = Option(projectType).map(v => {
       if ("" equals v) fr"1=1" else fr"p.project_type = $v"
     })
-    val f6 = Option(isDeleted).map(v => {
-      if (v == -1) fr"1=1" else fr"p.is_deleted = $v"
-    })
+    val f6 = Option(0).map(v => fr"p.is_deleted = $v")
     val q =
       fr"""SELECT
                     count(p.id)
                  FROM project p left join project_group pg on p.project_group_id = pg.id
-              """.stripMargin ++ whereAndOpt(f1, f2, f3, f4, f5, f6)
+              """.stripMargin ++ whereAndOpt(f2, f3, f4, f5, f6)
     q.query[Int]
+  }
+
+  def findAllProjectSql(): doobie.Query0[ProjectNameAndId] = {
+    val f1 = Option(0).map(i => fr"p.is_deleted = $i")
+
+    val q =
+      fr"""SELECT
+              p.project_name,
+              p.id as project_id
+           FROM project p
+           """.stripMargin ++ whereAndOpt(f1) ++
+        Fragment.const(s" order by p.created_at desc ")
+    q.query[ProjectNameAndId]
   }
 
 

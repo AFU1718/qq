@@ -6,7 +6,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.config.AppConfig
 import com.zz.ady.dal.dao.{ProjectGroupDAO, UserInfoDAO}
-import com.zz.ady.idl.{PostProjectGroup, ProjectGroup, ProjectGroupList, ReturnProjectGroup, UserInfo}
+import com.zz.ady.idl.{PostProjectGroup, ProjectGroup, ProjectGroupList, ProjectGroupNameAndIdList, ReturnProjectGroup, UserInfo}
 //import com.zz.ady.dal.model.ProjectGroup
 import doobie.util.transactor.Transactor
 
@@ -48,10 +48,10 @@ class ProjectGroupService[F[_] : Effect](xa: Transactor[F]) {
     } yield a
   }
 
-  def queryProjectGroup(id: Int, projectGroupName: String, isDeleted: Int, pageNo: Int, pageSize: Int): F[ProjectGroupList] = {
+  def queryProjectGroup(projectGroupName: String, pageNo: Int, pageSize: Int): F[ProjectGroupList] = {
     for {
-      returnProjectGroupList <- projectGroupDAO.queryProjectGroup(id, projectGroupName, isDeleted, pageNo, pageSize)
-      count <- projectGroupDAO.countProjectGroup(id, projectGroupName, isDeleted)
+      returnProjectGroupList <- projectGroupDAO.queryProjectGroup(projectGroupName, pageNo, pageSize)
+      count <- projectGroupDAO.countProjectGroup(projectGroupName)
     } yield {
       ProjectGroupList(
         count = count,
@@ -59,6 +59,16 @@ class ProjectGroupService[F[_] : Effect](xa: Transactor[F]) {
         index = pageNo,
         pageSize = pageSize,
         returnProjectGroupList = returnProjectGroupList.toList
+      )
+    }
+  }
+
+  def findAllProjectGroup(): F[ProjectGroupNameAndIdList] ={
+    for {
+      projectGroupNameAndIdList <- projectGroupDAO.findAllProjectGroup()
+    } yield {
+      ProjectGroupNameAndIdList(
+        projectGroupNameAndIdList = projectGroupNameAndIdList.toList
       )
     }
   }

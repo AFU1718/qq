@@ -6,13 +6,11 @@ GET `/v1/projectGroups`
 
 请求参数
 
-| 参数名           | 参数定义   | 类型   | 说明                 | 必填id |
-| ---------------- | ---------- | ------ | -------------------- | ------ |
-| id               | 项目组ID   | int    |                      | n      |
-| projectGroupName | 项目组名称 | string | 模糊查询             | n      |
-| isDeleted        | 删除标记   | int    | 0是未删除，1是已删除 | n      |
-| pageNo           | 第几页     | int    | 默认是1              | n      |
-| pageSize         | 页数       | int    | 默认是10             | n      |
+| 参数名           | 参数定义   | 类型   | 说明     | 必填id |
+| ---------------- | ---------- | ------ | -------- | ------ |
+| projectGroupName | 项目组名称 | string | 模糊查询 | n      |
+| pageNo           | 第几页     | int    | 默认是1  | n      |
+| pageSize         | 页数       | int    | 默认是10 | n      |
 
 响应
 
@@ -26,7 +24,7 @@ GET `/v1/projectGroups`
 
 #### Request
 
-**GET** /v1/projectGroups?id=1&projectGroupName=project&isDeleted=0&pageNo=1&pageSize=10
+**GET** /v1/projectGroups?projectGroupName=project&pageNo=1&pageSize=10
 
 #### Response
 
@@ -267,3 +265,56 @@ PUT /v1/projectGroups
 }
 ```
 
+
+
+## 获取全部项目组（不分页）
+
+GET /v1/projectGroups/nameAndId
+
+请求参数
+
+无
+
+响应
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| status  | 状态     | int    | 0: 成功，1: 失败 | y    |
+| data    | 响应数据 |        | 见示例           | n    |
+| message | 错误消息 | String |                  | n    |
+
+示例
+
+#### Request
+
+**GET** /v1/projectGroups/nameAndId
+
+#### Response
+
+```json
+{
+    "data": {
+        "projectGroupNameAndIdList": [
+            {
+                "projectGroupName": "kkk project",
+                "projectGroupId": 4
+            },
+            {
+                "projectGroupName": "hhh project",
+                "projectGroupId": 3
+            },
+            {
+                "projectGroupName": "projectGroup2",
+                "projectGroupId": 2
+            },
+            {
+                "projectGroupName": "projectGroup1",
+                "projectGroupId": 1
+            }
+        ]
+    },
+    "status": 0
+}
+```
+
+## 

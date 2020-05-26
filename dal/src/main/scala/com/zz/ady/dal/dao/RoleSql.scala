@@ -1,7 +1,7 @@
 package com.zz.ady.dal.dao
 
 import com.typesafe.scalalogging.Logger
-import com.zz.ady.idl.Role
+import com.zz.ady.idl.{Role, RoleNameAndId}
 //import com.zz.ady.dal.model.Role
 import doobie.implicits._
 import doobie.postgres.implicits._
@@ -68,18 +68,16 @@ trait RoleSql extends Sql {
         """.stripMargin ++ whereAndOpt(f1)).update
   }
 
-  def queryRoleSql(id: Int, roleName: String, isDeleted: Int, pageNo: Int, pageSize: Int
+  def queryRoleSql( roleName: String, pageNo: Int, pageSize: Int
                      ): doobie.Query0[Role] = {
     val offset = pageNo * pageSize - pageSize
-    val f1 = Option(id).map(v => {
-      if (v == -1) fr"1=1" else fr"r.id = $v"
-    })
+//    val f1 = Option(id).map(v => {
+//      if (v == -1) fr"1=1" else fr"r.id = $v"
+//    })
     val f2 = Option(roleName).map(v => {
       if ("" equals v) fr"1=1" else fr"r.role_name = $v"
     })
-    val f3 = Option(isDeleted).map(v => {
-      if (v == -1) fr"1=1" else fr"r.is_deleted = $v"
-    })
+    val f3 = Option(0).map(v => fr"r.is_deleted = $v")
 
     val q =
       fr"""SELECT
@@ -90,28 +88,40 @@ trait RoleSql extends Sql {
               r.updated_at,
               r.is_deleted
            FROM role r
-           """.stripMargin ++ whereAndOpt(f1, f2, f3) ++
+           """.stripMargin ++ whereAndOpt(f2, f3) ++
         Fragment.const(s" order by created_at desc offset $offset limit $pageSize")
     q.query[Role]
   }
 
-  def countRoleSql(id: Int, roleName: String, isDeleted: Int): doobie.Query0[Int] = {
-    val f1 = Option(id).map(v => {
-      if (v == -1) fr"1=1" else fr"r.id = $v"
-    })
+  def countRoleSql(roleName: String): doobie.Query0[Int] = {
+//    val f1 = Option(id).map(v => {
+//      if (v == -1) fr"1=1" else fr"r.id = $v"
+//    })
     val f2 = Option(roleName).map(v => {
       if ("" equals v) fr"1=1" else fr"r.role_name = $v"
     })
-    val f3 = Option(isDeleted).map(v => {
-      if (v == -1) fr"1=1" else fr"r.is_deleted = $v"
-    })
+    val f3 = Option(0).map(v => fr"r.is_deleted = $v")
     val q =
       fr"""SELECT
                     count(r.id)
                  FROM role r
-              """.stripMargin ++ whereAndOpt(f1, f2, f3)
+              """.stripMargin ++ whereAndOpt(f2, f3)
     q.query[Int]
   }
+
+  def findAllRoleSql(): doobie.Query0[RoleNameAndId] = {
+    val f1 = Option(0).map(i => fr"r.is_deleted = $i")
+
+    val q =
+      fr"""SELECT
+              r.role_name,
+              r.id as role_id
+           FROM role r
+           """.stripMargin ++ whereAndOpt(f1) ++
+        Fragment.const(s" order by r.created_at desc ")
+    q.query[RoleNameAndId]
+  }
+
 
   def findRoleByIdSql(id: Int): doobie.Query0[Role] = {
     val f1 = Option(id).map(i => fr"id = $i")

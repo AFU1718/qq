@@ -44,11 +44,11 @@ class ProjectDeploymentRecordDAO[F[_] : Sync](xa: Transactor[F]) extends Project
   def updateProjectDeploymentRecord(projectDeploymentRecord: ProjectDeploymentRecord): F[Int] =
     updateProjectDeploymentRecordSql(projectDeploymentRecord).run.transact(xa)
 
-  def queryProjectDeploymentRecord(id: Int, projectId: Int, projectName: String, status: Int, isDeleted: Int, pageNo: Int, pageSize: Int): F[Vector[ReturnProjectDeploymentRecord]] =
-    queryProjectDeploymentRecordSql(id, projectId, projectName, status, isDeleted, pageNo, pageSize).to[Vector].transact(xa)
+  def queryProjectDeploymentRecord(projectId: Int, projectName: String, status: Int, pageNo: Int, pageSize: Int): F[Vector[ReturnProjectDeploymentRecord]] =
+    queryProjectDeploymentRecordSql(projectId, projectName, status, pageNo, pageSize).to[Vector].transact(xa)
 
-  def countProjectDeploymentRecord(id: Int, projectId: Int, projectName: String, status: Int, isDeleted: Int): F[Int] =
-    countProjectDeploymentRecordSql(id, projectId, projectName, status, isDeleted).unique.transact(xa)
+  def countProjectDeploymentRecord(projectId: Int, projectName: String, status: Int): F[Int] =
+    countProjectDeploymentRecordSql(projectId, projectName, status).unique.transact(xa)
 
   def findProjectDeploymentRecordById(id: Int): F[Option[ReturnProjectDeploymentRecord]] =
     findProjectDeploymentRecordByIdSql(id).option.transact(xa)

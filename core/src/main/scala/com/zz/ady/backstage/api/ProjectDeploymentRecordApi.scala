@@ -26,7 +26,7 @@ class ProjectDeploymentRecordApi[F[_]](xa: Transactor[F])(implicit val F: Effect
 
   private val service: ProjectDeploymentRecordService[F] = ProjectDeploymentRecordService[F](xa)
 
-  private[this] object IdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("id")
+//  private[this] object IdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("id")
 
   private[this] object ProjectIdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("projectId")
 
@@ -34,7 +34,7 @@ class ProjectDeploymentRecordApi[F[_]](xa: Transactor[F])(implicit val F: Effect
 
   private[this] object StatusQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("status")
 
-  private[this] object IsDeletedQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("isDeleted")
+//  private[this] object IsDeletedQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("isDeleted")
 
   private[this] object PageNoQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageNo")
 
@@ -86,13 +86,13 @@ class ProjectDeploymentRecordApi[F[_]](xa: Transactor[F])(implicit val F: Effect
 
   def queryProjectDeploymentRecordR: HttpRoutes[F] = {
     HttpRoutes.of[F] {
-      case GET -> Root / "v1" / "deployments" :? IdQueryParamMatcher(id) :? ProjectIdQueryParamMatcher(projectId)
+      case GET -> Root / "v1" / "deployments" :? ProjectIdQueryParamMatcher(projectId)
         :? ProjectNameQueryParamMatcher(projectName)
-        :? StatusQueryParamMatcher(status) :? IsDeletedQueryParamMatcher(isDeleted)
+        :? StatusQueryParamMatcher(status)
         :? PageNoQueryParamMatcher(pageNo) :? PageSizeQueryParamMatcher(pageSize) =>
 
         val result: F[Pretty[ProjectDeploymentRecordList]] = for {
-          r <- service.queryProjectDeploymentRecord(id.getOrElse(-1), projectId.getOrElse(-1), projectName.getOrElse(""), status.getOrElse(-1), isDeleted.getOrElse(-1), pageNo.getOrElse(1), pageSize.getOrElse(10))
+          r <- service.queryProjectDeploymentRecord(projectId.getOrElse(-1), projectName.getOrElse(""), status.getOrElse(-1), pageNo.getOrElse(1), pageSize.getOrElse(10))
         } yield Pretty(r)
 
         result.flatMap(Ok(_))

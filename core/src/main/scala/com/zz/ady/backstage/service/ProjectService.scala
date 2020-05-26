@@ -6,7 +6,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.config.AppConfig
 import com.zz.ady.dal.dao.{ProjectDAO, ProjectGroupDAO, UserInfoDAO}
-import com.zz.ady.idl.{PostProject, Project, ProjectList, ReturnProject, UserInfo}
+import com.zz.ady.idl.{PostProject, Project, ProjectList, ProjectNameAndId, ReturnProject, ProjectNameAndIdList}
 //import com.zz.ady.dal.model.Project
 import doobie.util.transactor.Transactor
 
@@ -49,10 +49,10 @@ class ProjectService[F[_] : Effect](xa: Transactor[F]) {
     } yield a
   }
 
-  def queryProject(id: Int, projectGroupId: Int, projectGroupName:String, projectName: String, projectType: String, isDeleted: Int, pageNo: Int, pageSize: Int): F[ProjectList] = {
+  def queryProject(projectGroupId: Int, projectGroupName:String, projectName: String, projectType: String, pageNo: Int, pageSize: Int): F[ProjectList] = {
     for {
-      returnProjectList <- projectDAO.queryProject(id, projectGroupId, projectGroupName, projectName, projectType, isDeleted, pageNo, pageSize)
-      count <- projectDAO.countProject(id, projectGroupId, projectGroupName, projectName, projectType, isDeleted)
+      returnProjectList <- projectDAO.queryProject(projectGroupId, projectGroupName, projectName, projectType, pageNo, pageSize)
+      count <- projectDAO.countProject(projectGroupId, projectGroupName, projectName, projectType)
     } yield {
       ProjectList(
         count = count,
@@ -63,6 +63,15 @@ class ProjectService[F[_] : Effect](xa: Transactor[F]) {
       )
     }
 
+  }
+  def findAllProject(): F[ProjectNameAndIdList] ={
+    for {
+      projectNameAndIdList <- projectDAO.findAllProject()
+    } yield {
+      ProjectNameAndIdList(
+        projectNameAndIdList = projectNameAndIdList.toList
+      )
+    }
   }
 
   def findProjectById(id: Int): F[Option[ReturnProject]] = {

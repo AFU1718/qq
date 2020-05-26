@@ -55,10 +55,10 @@ class ProjectDeploymentRecordService[F[_] : Effect](xa: Transactor[F]) {
     } yield a
   }
 
-  def queryProjectDeploymentRecord(id: Int, projectId: Int, projectName: String, status: Int, isDeleted: Int, pageNo: Int, pageSize: Int): F[ProjectDeploymentRecordList] = {
+  def queryProjectDeploymentRecord(projectId: Int, projectName: String, status: Int, pageNo: Int, pageSize: Int): F[ProjectDeploymentRecordList] = {
     for {
-      returnProjectDeploymentRecordList <- projectDeploymentRecordDAO.queryProjectDeploymentRecord(id, projectId, projectName, status, isDeleted, pageNo, pageSize)
-      count <- projectDeploymentRecordDAO.countProjectDeploymentRecord(id, projectId, projectName, status, isDeleted)
+      returnProjectDeploymentRecordList <- projectDeploymentRecordDAO.queryProjectDeploymentRecord(projectId, projectName, status, pageNo, pageSize)
+      count <- projectDeploymentRecordDAO.countProjectDeploymentRecord(projectId, projectName, status)
     } yield {
       ProjectDeploymentRecordList(
         count = count,

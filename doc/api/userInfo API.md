@@ -6,15 +6,13 @@ GET `/v1/userInfo`
 
 请求参数
 
-| 参数名    | 参数定义   | 类型   | 说明                 | 必填id |
-| --------- | ---------- | ------ | -------------------- | ------ |
-| id        | 用户信息id | int    |                      | n      |
-| name      | 用户名     | string |                      | n      |
-| roleId    | 角色id     | int    |                      | n      |
-| roleName  | 角色名称   | string | 模糊查询             | n      |
-| isDeleted | 删除标记   | int    | 0是未删除，1是已删除 | n      |
-| pageNo    | 第几页     | int    | 默认是1              | n      |
-| pageSize  | 页数       | int    | 默认是10             | n      |
+| 参数名   | 参数定义 | 类型   | 说明     | 必填id |
+| -------- | -------- | ------ | -------- | ------ |
+| name     | 用户名   | string |          | n      |
+| roleId   | 角色id   | int    |          | n      |
+| roleName | 角色名称 | string | 模糊查询 | n      |
+| pageNo   | 第几页   | int    | 默认是1  | n      |
+| pageSize | 页数     | int    | 默认是10 | n      |
 
 响应
 
@@ -28,7 +26,7 @@ GET `/v1/userInfo`
 
 #### Request
 
-**GET** /v1/userInfo?id=1&name=ss&roleId=1&roleName=管理员&isDeleted=0&pageNo=1&pageSize=10
+**GET** /v1/userInfo?name=ss&roleId=1&roleName=管理员&pageNo=1&pageSize=10
 
 #### Response
 
@@ -241,3 +239,52 @@ PUT /v1/userInfo
 }
 ```
 
+
+
+## 获取全部用户信息（不分页）
+
+GET /v1/userInfo/nameAndId
+
+请求参数
+
+无
+
+响应
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| status  | 状态     | int    | 0: 成功，1: 失败 | y    |
+| data    | 响应数据 |        | 见示例           | n    |
+| message | 错误消息 | String |                  | n    |
+
+示例
+
+#### Request
+
+**GET** /v1/userInfo/nameAndId
+
+#### Response
+
+```json
+{
+    "data": {
+        "userInfoNameAndIdList": [
+            {
+                "userInfoName": "dhj",
+                "userInfoId": 3
+            },
+            {
+                "userInfoName": "afu2",
+                "userInfoId": 2
+            },
+            {
+                "userInfoName": "afu1",
+                "userInfoId": 1
+            }
+        ]
+    },
+    "status": 0
+}
+```
+
+## 

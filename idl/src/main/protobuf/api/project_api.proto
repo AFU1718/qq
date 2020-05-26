@@ -28,7 +28,7 @@ message ProjectList {
   int32                           index = 2;                     // 页码索引
   int32                           page_size = 3;                 // 每页大小
   int32                           size = 4;                      // 共多少页
-  repeated ReturnProject          return_project_list = 5;       // 项目组列表
+  repeated ReturnProject          return_project_list = 5;       // 项目列表
 }
 
 // 新建项目
@@ -54,6 +54,10 @@ message ReturnProject {
   string           created_at = 9;      // 创建时间
   string           updated_at = 10;      // 最近更新时间
   int32            is_deleted = 11;     // 删除标记
+}
+
+message ProjectNameAndIdList {
+  repeated ProjectNameAndId    project_name_and_id_list = 1;       // 项目名称id列表
 }
 
 message ProjectNameAndId {

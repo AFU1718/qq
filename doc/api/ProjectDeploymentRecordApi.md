@@ -8,11 +8,9 @@ GET `/v1/deployments`
 
 | 参数名      | 参数定义   | 类型       | 说明                                               | 必填id |
 | ---------- | ---------| ---------- | -------------------------------------------------- | ---- |
-| id | 项目部署记录ID | int |      | n   |
 | projectId | 项目id | int  |   | n   |
 | projectName | 项目名称 | string | 模糊查询 | n |
 | status | 部署状态 | int | 0是失败，1是成功 | n |
-| isDeleted | 删除标记 | int | 0是未删除，1是已删除 | n |
 | pageNo | 第几页 | int | 默认是1 | n |
 | pageSize | 页数 | int | 默认是10 | n |
 
@@ -28,7 +26,7 @@ GET `/v1/deployments`
 
 示例
 #### Request
-**GET** /v1/deployments?id=1&projectId=1&status=1&isDeleted=0&pageNo=1&pageSize=10
+**GET** /v1/deployments?projectId=1&status=1&pageNo=1&pageSize=10
 
 #### Response
 ```json

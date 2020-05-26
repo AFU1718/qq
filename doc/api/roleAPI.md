@@ -6,13 +6,11 @@ GET `/v1/roles`
 
 请求参数
 
-| 参数名    | 参数定义 | 类型   | 说明                 | 必填id |
-| --------- | -------- | ------ | -------------------- | ------ |
-| id        | 角色ID   | int    |                      | n      |
-| roleName  | 角色名称 | string |                      | n      |
-| isDeleted | 删除标记 | int    | 0是未删除，1是已删除 | n      |
-| pageNo    | 第几页   | int    | 默认是1              | n      |
-| pageSize  | 页数     | int    | 默认是10             | n      |
+| 参数名   | 参数定义 | 类型   | 说明     | 必填id |
+| -------- | -------- | ------ | -------- | ------ |
+| roleName | 角色名称 | string |          | n      |
+| pageNo   | 第几页   | int    | 默认是1  | n      |
+| pageSize | 页数     | int    | 默认是10 | n      |
 
 响应
 
@@ -26,7 +24,7 @@ GET `/v1/roles`
 
 #### Request
 
-**GET** /v1/roles?id=1&roleName=admin&isDeleted=0&pageNo=1&pageSize=10
+**GET** /v1/roles?roleName=admin&pageNo=1&pageSize=10
 
 #### Response
 
@@ -233,3 +231,52 @@ PUT /v1/roles
 }
 ```
 
+
+
+## 获取全部角色（不分页）
+
+GET /v1/roles/nameAndId
+
+请求参数
+
+无
+
+响应
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| status  | 状态     | int    | 0: 成功，1: 失败 | y    |
+| data    | 响应数据 |        | 见示例           | n    |
+| message | 错误消息 | String |                  | n    |
+
+示例
+
+#### Request
+
+**GET** /v1/roles/nameAndId
+
+#### Response
+
+```json
+{
+    "data": {
+        "roleNameAndIdList": [
+            {
+                "roleName": "dhj",
+                "roleId": 3
+            },
+            {
+                "roleName": "user",
+                "roleId": 2
+            },
+            {
+                "roleName": "admin",
+                "roleId": 1
+            }
+        ]
+    },
+    "status": 0
+}
+```
+
+## 

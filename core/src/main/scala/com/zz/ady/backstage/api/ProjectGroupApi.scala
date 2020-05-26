@@ -6,7 +6,7 @@ import cats.effect.Effect
 import cats.implicits._
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.service.ProjectGroupService
-import com.zz.ady.idl.{PostProjectDeploymentRecord, PostProjectGroup, ProjectGroup, ProjectGroupList, ReturnProjectGroup}
+import com.zz.ady.idl.{PostProjectDeploymentRecord, PostProjectGroup, ProjectGroup, ProjectGroupList, ProjectGroupNameAndIdList, ReturnProjectGroup}
 //import com.zz.ady.dal.model.ProjectGroup
 import org.http4s.{HttpRoutes, Request, Response}
 import doobie.util.transactor.Transactor
@@ -25,11 +25,11 @@ class ProjectGroupApi[F[_]](xa: Transactor[F])(implicit val F: Effect[F], val sy
 
   private val service: ProjectGroupService[F] = ProjectGroupService[F](xa)
 
-  private[this] object IdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("id")
+//  private[this] object IdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("id")
 
   private[this] object ProjectGroupNameQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("projectGroupName")
 
-  private[this] object IsDeletedQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("isDeleted")
+//  private[this] object IsDeletedQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("isDeleted")
 
   private[this] object PageNoQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageNo")
 
@@ -83,16 +83,26 @@ class ProjectGroupApi[F[_]](xa: Transactor[F])(implicit val F: Effect[F], val sy
 
   def queryProjectGroupR: HttpRoutes[F] = {
     HttpRoutes.of[F] {
-      case GET -> Root / "v1" / "projectGroups" :? IdQueryParamMatcher(id) :? ProjectGroupNameQueryParamMatcher(projectGroupName)
-        :? IsDeletedQueryParamMatcher(isDeleted) :? PageNoQueryParamMatcher(pageNo) :? PageSizeQueryParamMatcher(pageSize) =>
+      case GET -> Root / "v1" / "projectGroups" :? ProjectGroupNameQueryParamMatcher(projectGroupName)
+        :? PageNoQueryParamMatcher(pageNo) :? PageSizeQueryParamMatcher(pageSize) =>
         val result: F[Pretty[ProjectGroupList]] = for {
-          r <- service.queryProjectGroup(id.getOrElse(-1), projectGroupName.getOrElse(""), isDeleted.getOrElse(-1), pageNo.getOrElse(1), pageSize.getOrElse(10))
+          r <- service.queryProjectGroup(projectGroupName.getOrElse(""), pageNo.getOrElse(1), pageSize.getOrElse(10))
         } yield Pretty(r)
         result.flatMap(Ok(_))
     }
   }
 
-  override val publicR: HttpRoutes[F] = findProjectGroupByIdR <+> createProjectGroupR <+> deleteProjectGroupR <+> updateProjectGroupR <+> queryProjectGroupR
+  def findAllProjectGroupR: HttpRoutes[F] = {
+    HttpRoutes.of[F] {
+      case GET -> Root / "v1" / "projectGroups" / "nameAndId" =>
+        val result: F[Pretty[ProjectGroupNameAndIdList]] = for {
+          r <- service.findAllProjectGroup()
+        } yield Pretty(r)
+        result.flatMap(Ok(_))
+
+    }
+  }
+  override val publicR: HttpRoutes[F] = findProjectGroupByIdR <+> createProjectGroupR <+> deleteProjectGroupR <+> updateProjectGroupR <+> queryProjectGroupR <+> findAllProjectGroupR
 
 
 }

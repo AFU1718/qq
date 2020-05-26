@@ -1,7 +1,7 @@
 package com.zz.ady.dal.dao
 
 import cats.effect.Sync
-import com.zz.ady.idl.{Project, ReturnProject}
+import com.zz.ady.idl.{Project, ProjectNameAndId, ReturnProject}
 //import com.zz.ady.dal.model.Project
 import doobie.implicits._
 import doobie.util.transactor.Transactor
@@ -22,12 +22,15 @@ class ProjectDAO[F[_] : Sync](xa: Transactor[F]) extends ProjectSql {
   def updateProject(project: Project): F[Int] =
     updateProjectSql(project).run.transact(xa)
 
-  def queryProject(id: Int, projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String, isDeleted: Int, pageNo: Int, pageSize: Int): F[Vector[ReturnProject]] =
-    queryProjectSql(id, projectGroupId, projectGroupName, projectName, projectType, isDeleted, pageNo, pageSize).to[Vector].transact(xa)
+  def queryProject(projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String, pageNo: Int, pageSize: Int): F[Vector[ReturnProject]] =
+    queryProjectSql(projectGroupId, projectGroupName, projectName, projectType, pageNo, pageSize).to[Vector].transact(xa)
 
-  def countProject(id: Int, projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String, isDeleted: Int): F[Int] =
-    countProjectSql(id, projectGroupId, projectGroupName, projectName, projectType, isDeleted).unique.transact(xa)
+  def countProject(projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String): F[Int] =
+    countProjectSql(projectGroupId, projectGroupName, projectName, projectType).unique.transact(xa)
 
+  def findAllProject(): F[Vector[ProjectNameAndId]] = {
+    findAllProjectSql().to[Vector].transact(xa)
+  }
   def findProjectById(id: Int): F[Option[ReturnProject]] =
     findProjectByIdSql(id).option.transact(xa)
 

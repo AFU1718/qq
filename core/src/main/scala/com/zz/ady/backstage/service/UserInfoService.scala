@@ -6,7 +6,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.config.AppConfig
 import com.zz.ady.dal.dao.UserInfoDAO
-import com.zz.ady.idl.{PostUserInfo, ReturnUserInfo, UserInfo, UserInfoList}
+import com.zz.ady.idl.{PostUserInfo, ReturnUserInfo, UserInfo, UserInfoList, UserInfoNameAndIdList}
 //import com.zz.ady.dal.model.UserInfo
 import doobie.util.transactor.Transactor
 
@@ -44,10 +44,10 @@ class UserInfoService[F[_] : Effect](xa: Transactor[F]) {
     } yield a
   }
 
-  def queryUserInfo(id: Int, name: String, roleId: Int, roleName: String, isDeleted: Int, pageNo: Int, pageSize: Int): F[UserInfoList] = {
+  def queryUserInfo(name: String, roleId: Int, roleName: String, pageNo: Int, pageSize: Int): F[UserInfoList] = {
     for {
-      returnUserInfoList <- userInfoDAO.queryUserInfo(id, name, roleId, roleName, isDeleted, pageNo, pageSize)
-      count <- userInfoDAO.countUserInfo(id, name, roleId, roleName, isDeleted)
+      returnUserInfoList <- userInfoDAO.queryUserInfo(name, roleId, roleName, pageNo, pageSize)
+      count <- userInfoDAO.countUserInfo(name, roleId, roleName)
     } yield {
       UserInfoList(
         count = count,
@@ -55,6 +55,16 @@ class UserInfoService[F[_] : Effect](xa: Transactor[F]) {
         index = pageNo,
         pageSize = pageSize,
         returnUserInfoList = returnUserInfoList.toList
+      )
+    }
+  }
+
+  def findAllUserInfo(): F[UserInfoNameAndIdList] ={
+    for {
+      userInfoNameAndIdList <- userInfoDAO.findAllUserInfo()
+    } yield {
+      UserInfoNameAndIdList(
+        userInfoNameAndIdList = userInfoNameAndIdList.toList
       )
     }
   }

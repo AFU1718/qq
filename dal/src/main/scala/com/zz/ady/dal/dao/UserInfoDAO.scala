@@ -1,7 +1,7 @@
 package com.zz.ady.dal.dao
 
 import cats.effect.Sync
-import com.zz.ady.idl.{ReturnUserInfo, UserInfo}
+import com.zz.ady.idl.{ReturnUserInfo, UserInfo, UserInfoNameAndId}
 //import com.zz.ady.dal.model.UserInfo
 import doobie.implicits._
 import doobie.util.transactor.Transactor
@@ -22,12 +22,15 @@ class UserInfoDAO[F[_] : Sync](xa: Transactor[F]) extends UserInfoSql {
   def updateUserInfo(userInfo: UserInfo): F[Int] =
     updateUserInfoSql(userInfo).run.transact(xa)
 
-  def queryUserInfo(id: Int, name: String, roleId: Int, roleName: String, isDeleted: Int, pageNo: Int, pageSize: Int): F[Vector[ReturnUserInfo]] =
-    queryUserInfoSql(id, name, roleId, roleName, isDeleted, pageNo, pageSize).to[Vector].transact(xa)
+  def queryUserInfo(name: String, roleId: Int, roleName: String, pageNo: Int, pageSize: Int): F[Vector[ReturnUserInfo]] =
+    queryUserInfoSql(name, roleId, roleName, pageNo, pageSize).to[Vector].transact(xa)
 
-  def countUserInfo(id: Int, name: String, roleId: Int, roleName: String, isDeleted: Int): F[Int] =
-    countUserInfoSql(id, name, roleId, roleName, isDeleted).unique.transact(xa)
+  def countUserInfo(name: String, roleId: Int, roleName: String): F[Int] =
+    countUserInfoSql(name, roleId, roleName).unique.transact(xa)
 
+  def findAllUserInfo(): F[Vector[UserInfoNameAndId]] = {
+    findAllUserInfoSql().to[Vector].transact(xa)
+  }
   def findUserInfoById(id: Int): F[Option[ReturnUserInfo]] =
     findUserInfoByIdSql(id).option.transact(xa)
 
