@@ -222,7 +222,7 @@ POST `/v1/deployments`
   "changeLog": "changelog2",
   "developers": "a and b",
   "testers": "c",
-  "deployedAt":  "2018-08-09T08:59:08.853Z",
+  "deployedAt":  "2018-08-09 08:59:08",
   "totalTime": 200,
   "note": "ooww",
   "createdBy": 1,

@@ -12,6 +12,7 @@ import com.zz.ady.backstage.config.AppConfig
 import com.zz.ady.dal.dao.{ProjectDAO, ProjectDeploymentRecordDAO, UserInfoDAO}
 //import com.zz.ady.dal.model.ProjectDeploymentRecord
 import doobie.util.transactor.Transactor
+import com.zz.ady.common.util.TimeTransUtil._
 
 object ProjectDeploymentRecordService {
 
@@ -36,7 +37,7 @@ class ProjectDeploymentRecordService[F[_] : Effect](xa: Transactor[F]) {
       case (Some(_), Some(_), Some(_)) =>
         projectDeploymentRecordDAO.createProjectDeploymentRecord(postProjectDeploymentRecord.projectId, postProjectDeploymentRecord.status,
           postProjectDeploymentRecord.version, postProjectDeploymentRecord.changeLog, postProjectDeploymentRecord.developers,
-          postProjectDeploymentRecord.testers, Instant.parse(postProjectDeploymentRecord.deployedAt), postProjectDeploymentRecord.totalTime,
+          postProjectDeploymentRecord.testers, stringToInstant(timestamp2String2(postProjectDeploymentRecord.deployedAt.toLong)), postProjectDeploymentRecord.totalTime,
           postProjectDeploymentRecord.note, postProjectDeploymentRecord.createdBy, postProjectDeploymentRecord.updatedBy)
 
       case _ => F.pure(0)
