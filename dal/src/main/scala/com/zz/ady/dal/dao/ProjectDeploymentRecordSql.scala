@@ -165,7 +165,6 @@ trait ProjectDeploymentRecordSql extends Sql {
     q.query[Int]
   }
 
-
   def findProjectDeploymentRecordByIdSql(id: Int): doobie.Query0[ReturnProjectDeploymentRecord] = {
     val f1 = Option(id).map(i => fr"pdr.id = $i")
     val f2 = Option(0).map(i => fr"pdr.is_deleted = $i")

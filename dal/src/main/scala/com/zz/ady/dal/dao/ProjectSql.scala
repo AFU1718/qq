@@ -90,7 +90,7 @@ trait ProjectSql extends Sql {
       if ("" equals v) fr"1=1" else fr"p.project_group_name like ${"%" + v + "%"}"
     })
     val f4 = Option(projectName).map(v => {
-      if ("" equals v) fr"1=1" else fr"p.project_name = $v"
+      if ("" equals v) fr"1=1" else fr"p.project_name like ${"%" + v + "%"}"
     })
     val f5 = Option(projectType).map(v => {
       if ("" equals v) fr"1=1" else fr"p.project_type = $v"
@@ -130,7 +130,7 @@ trait ProjectSql extends Sql {
       if ("" equals v) fr"1=1" else fr"p.project_group_name like ${"%" + v + "%"}"
     })
     val f4 = Option(projectName).map(v => {
-      if ("" equals v) fr"1=1" else fr"p.project_name = $v"
+      if ("" equals v) fr"1=1" else fr"p.project_name like ${"%" + v + "%"}"
     })
     val f5 = Option(projectType).map(v => {
       if ("" equals v) fr"1=1" else fr"p.project_type = $v"
