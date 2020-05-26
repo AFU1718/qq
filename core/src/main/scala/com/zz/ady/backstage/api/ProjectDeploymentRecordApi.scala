@@ -56,7 +56,7 @@ class ProjectDeploymentRecordApi[F[_]](xa: Transactor[F])(implicit val F: Effect
       case req@POST -> Root / "v1" / "deployments" =>
         val r: F[Int] = req.as[PostProjectDeploymentRecord].flatMap(service.createProjectDeploymentRecord)
         r.flatMap {
-          case 1 => Ok(Pretty(0,ApiStatus.Ok))
+          case 1 => Ok(Pretty(ApiStatus.Ok))
           case 0 => Ok(Pretty(0,ApiStatus.InternalServerError))
         }
     }

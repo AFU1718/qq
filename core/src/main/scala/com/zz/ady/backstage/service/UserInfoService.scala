@@ -19,9 +19,9 @@ object UserInfoService {
 
 class UserInfoService[F[_] : Effect](xa: Transactor[F]) {
 
-  private[this] val F: Sync[F] = implicitly[Sync[F]]
+//  private[this] val F: Sync[F] = implicitly[Sync[F]]
   private[this] val logger = Logger(getClass)
-  val effectEv: Effect[F] = implicitly
+  val F: Effect[F] = implicitly
 
   private[this] val userInfoDAO: UserInfoDAO[F] = UserInfoDAO[F](xa)
 

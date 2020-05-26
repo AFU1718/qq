@@ -23,22 +23,22 @@ object ProjectDeploymentRecordService {
 
 class ProjectDeploymentRecordService[F[_] : Effect](xa: Transactor[F]) {
 
-  private[this] val F: Sync[F] = implicitly[Sync[F]]
+  //  private[this] val F: Sync[F] = implicitly[Sync[F]]
   private[this] val logger = Logger(getClass)
-  val effectEv: Effect[F] = implicitly
+  val F: Effect[F] = implicitly
 
   private[this] val projectDeploymentRecordDAO: ProjectDeploymentRecordDAO[F] = ProjectDeploymentRecordDAO[F](xa)
 
-  def createProjectDeploymentRecord(postProjectDeploymentRecord: PostProjectDeploymentRecord): F[Int] = {
-    val project: F[Option[ReturnProject]] = ProjectDAO(xa).findProjectById(postProjectDeploymentRecord.projectId)
-    val creatorInfo = UserInfoDAO(xa).findUserInfoById(postProjectDeploymentRecord.createdBy)
-    val updaterInfo = UserInfoDAO(xa).findUserInfoById(postProjectDeploymentRecord.updatedBy)
+  def createProjectDeploymentRecord(postRecord: PostProjectDeploymentRecord): F[Int] = {
+    val project: F[Option[ReturnProject]] = ProjectDAO(xa).findProjectById(postRecord.projectId)
+    val creatorInfo = UserInfoDAO(xa).findUserInfoById(postRecord.createdBy)
+    val updaterInfo = UserInfoDAO(xa).findUserInfoById(postRecord.updatedBy)
     (project, creatorInfo, updaterInfo).tupled flatMap {
       case (Some(_), Some(_), Some(_)) =>
-        projectDeploymentRecordDAO.createProjectDeploymentRecord(postProjectDeploymentRecord.projectId, postProjectDeploymentRecord.status,
-          postProjectDeploymentRecord.version, postProjectDeploymentRecord.changeLog, postProjectDeploymentRecord.developers,
-          postProjectDeploymentRecord.testers, stringToInstant(timestamp2String2(postProjectDeploymentRecord.deployedAt.toLong)), postProjectDeploymentRecord.totalTime,
-          postProjectDeploymentRecord.note, postProjectDeploymentRecord.createdBy, postProjectDeploymentRecord.updatedBy)
+        projectDeploymentRecordDAO.createProjectDeploymentRecord(postRecord.projectId, postRecord.status,
+          postRecord.version, postRecord.changeLog, postRecord.developers,
+          postRecord.testers, stringToInstant(timestamp2String2(postRecord.deployedAt.toLong)), postRecord.totalTime,
+          postRecord.note, postRecord.createdBy, postRecord.updatedBy)
 
       case _ => F.pure(0)
     }
