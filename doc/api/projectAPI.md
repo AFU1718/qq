@@ -20,8 +20,28 @@ GET `/v1/projects`
 | 参数名  | 参数定义 | 类型   | 说明             | 必填 |
 | ------- | -------- | ------ | ---------------- | ---- |
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
-| data    | 响应数据 |        | 见示例           | n    |
+| data    | 响应数据 |        | 见下表           | n    |
 | message | 错误消息 | String |                  | n    |
+
+data格式
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| id  | 项目id  | int    |  |     |
+| projectGroupId | 项目组id | int | | |
+| projectGroupName | 项目组名称 | string |            |     |
+| projectName | 项目名称 | string | | |
+| projectType | 项目类型 | string | | |
+| note | 备注 | string |                  |     |
+| creator | 创建人名称 | string | |  |
+| updater | 最近更新人名称 | string | |  |
+| createdAt | 创建时间     | string | "2020-05-25 17:00:03+08" ||
+| updatedAt | 最近更新时间 | string | "2020-05-25 17:00:03+08" ||
+| isDeleted | 删除标记     | int    |                          ||
+| count     | 总条数       | int    |                          ||
+| index     | 第几页       | int    |                          ||
+| pageSize  | 每页多少数据 | int    |                          ||
+| size      | 总页数       | int    |                          ||
 
 示例
 
@@ -38,45 +58,57 @@ GET `/v1/projects`
         "index": 1,
         "pageSize": 10,
         "size": 1,
-        "returnProjectGroupList": [
+        "returnProjectList": [
             {
                 "id": 4,
-                "projectGroupName": "kkk project",
-                "note": "djmk",
-                "creator": "afu2",
-                "updater": "afu2",
-                "createdAt": "2020-05-25 14:05:39.575578+08",
-                "updatedAt": "2020-05-25 14:05:39.575578+08",
+                "projectGroupId": 3,
+                "projectGroupName": "hhh project",
+                "projectName": "project hjhjd",
+                "projectType": "java",
+                "note": "ooww",
+                "creator": "afu1",
+                "updater": "afu1",
+                "createdAt": "2020-05-25 14:58:52.016311+08",
+                "updatedAt": "2020-05-25 14:58:52.016311+08",
                 "isDeleted": 0
             },
             {
                 "id": 3,
-                "projectGroupName": "hhh project",
-                "note": "dj",
+                "projectGroupId": 1,
+                "projectGroupName": "projectGroup1",
+                "projectName": "project hq",
+                "projectType": "java",
+                "note": "ooww",
                 "creator": "afu1",
-                "updater": "afu2",
-                "createdAt": "2020-05-25 14:02:13.422565+08",
-                "updatedAt": "2020-05-25 14:02:13.422565+08",
+                "updater": "afu1",
+                "createdAt": "2020-05-25 14:58:34.765448+08",
+                "updatedAt": "2020-05-25 14:58:34.765448+08",
                 "isDeleted": 0
             },
             {
                 "id": 2,
+                "projectGroupId": 2,
                 "projectGroupName": "projectGroup2",
-                "note": "ww",
+                "projectName": "project2",
+                "projectType": "scala",
+                "note": "jj",
                 "creator": "afu1",
                 "updater": "afu2",
-                "createdAt": "2020-05-25 13:42:27+08",
-                "updatedAt": "2020-05-25 13:42:30+08",
+                "createdAt": "2020-05-25 11:27:53+08",
+                "updatedAt": "2020-05-25 15:03:23.338061+08",
                 "isDeleted": 0
             },
             {
                 "id": 1,
+                "projectGroupId": 1,
                 "projectGroupName": "projectGroup1",
-                "note": "qq",
+                "projectName": "project1",
+                "projectType": "scala",
+                "note": "jj",
                 "creator": "afu1",
                 "updater": "afu2",
-                "createdAt": "2020-05-25 13:42:06+08",
-                "updatedAt": "2020-05-25 13:42:09+08",
+                "createdAt": "2020-05-25 11:27:26+08",
+                "updatedAt": "2020-05-25 15:02:26.011801+08",
                 "isDeleted": 0
             }
         ]
@@ -97,15 +129,29 @@ GET /v1/projects/{id}
 | ------ | -------- | ---- | ---- | ------ |
 | id     | 项目ID   | int  |      | n      |
 
-
-
 响应
 
 | 参数名  | 参数定义 | 类型   | 说明             | 必填 |
 | ------- | -------- | ------ | ---------------- | ---- |
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
-| data    | 响应数据 |        | 见示例           | n    |
+| data    | 响应数据 |        | 见下表           | n    |
 | message | 错误消息 | String |                  | n    |
+
+data格式
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| id  | 项目id  | int    |  |     |
+| projectGroupId | 项目组id | int | | |
+| projectGroupName | 项目组名称 | string |            |     |
+| projectName | 项目名称 | string | | |
+| projectType | 项目类型 | string | | |
+| note | 备注 | string |                  |     |
+| creator | 创建人名称 | string | |  |
+| updater | 最近更新人名称 | string | |  |
+| createdAt | 创建时间     | string | "2020-05-25 17:00:03+08" ||
+| updatedAt | 最近更新时间 | string | "2020-05-25 17:00:03+08" ||
+| isDeleted | 删除标记     | int    |                          ||
 
 示例
 
@@ -246,8 +292,9 @@ PUT `/v1/projects`
 | 参数名  | 参数定义 | 类型   | 说明             | 必填 |
 | ------- | -------- | ------ | ---------------- | ---- |
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
-| data    | 响应数据 |        | 见示例           | n    |
+| data    | 响应数据 |        |                  | n    |
 | message | 错误消息 | String |                  | n    |
+
 
 示例
 
@@ -258,7 +305,7 @@ PUT /v1/projects
 ```json
 {
      "id": 1,
-     "projectGroupName": "projectGroup1",
+     "projectGroupId": 1,
      "projectName":"project ufudsh",
      "projectType":"PYTHON",
      "note": "qq",
@@ -296,6 +343,13 @@ GET /v1/projects/nameAndId
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
 | data    | 响应数据 |        | 见示例           | n    |
 | message | 错误消息 | String |                  | n    |
+
+data格式
+
+| 参数名      | 参数定义 | 类型   | 说明 | 必填 |
+| ----------- | -------- | ------ | ---- | ---- |
+| projectName | 项目名称 | string |      |      |
+| projectId   | 项目id   | int    |      |      |
 
 示例
 

@@ -17,8 +17,25 @@ GET `/v1/projectGroups`
 | 参数名  | 参数定义 | 类型   | 说明             | 必填 |
 | ------- | -------- | ------ | ---------------- | ---- |
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
-| data    | 响应数据 |        | 见示例           | n    |
+| data    | 响应数据 |        | 见下表           | n    |
 | message | 错误消息 | String |                  | n    |
+
+data格式
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| id  | 项目组id | int    |  |     |
+| projectGroupName | 项目组名称 | string |            |     |
+| note      | 备注         | string |                          ||
+| creator | 创建人名称 | string | ||
+| updater | 最近更新人名称 | string | ||
+| createdAt | 创建时间     | string | "2020-05-25 17:00:03+08" ||
+| updatedAt | 最近更新时间 | string | "2020-05-25 17:00:03+08" ||
+| isDeleted | 删除标记     | int    |                          ||
+| count     | 总条数       | int    |                          ||
+| index     | 第几页       | int    |                          ||
+| pageSize  | 每页多少数据 | int    |                          ||
+| size      | 总页数       | int    |                          ||
 
 示例
 
@@ -103,6 +120,19 @@ GET /v1/projectGroups/{id}
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
 | data    | 响应数据 |        | 见示例           | n    |
 | message | 错误消息 | String |                  | n    |
+
+data格式
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| id  | 项目组id | int    |  |     |
+| projectGroupName | 项目组名称 | string |            |     |
+| note      | 备注         | string |                          ||
+| creator | 创建人名称 | string | ||
+| updater | 最近更新人名称 | string | ||
+| createdAt | 创建时间     | string | "2020-05-25 17:00:03+08" ||
+| updatedAt | 最近更新时间 | string | "2020-05-25 17:00:03+08" ||
+| isDeleted | 删除标记     | int    |                          ||
 
 示例
 
@@ -234,7 +264,7 @@ PUT `/v1/projectGroups`
 | 参数名  | 参数定义 | 类型   | 说明             | 必填 |
 | ------- | -------- | ------ | ---------------- | ---- |
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
-| data    | 响应数据 |        | 见示例           | n    |
+| data    | 响应数据 |        |                  | n    |
 | message | 错误消息 | String |                  | n    |
 
 示例
@@ -283,6 +313,12 @@ GET /v1/projectGroups/nameAndId
 | data    | 响应数据 |        | 见示例           | n    |
 | message | 错误消息 | String |                  | n    |
 
+data格式
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| projectGroupName | 项目组名称 | string |            |  |
+| projectGroupId | 项目组id  | int |                          ||
 示例
 
 #### Request

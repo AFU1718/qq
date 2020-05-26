@@ -20,11 +20,36 @@ GET `/v1/deployments`
 | 参数名      | 参数定义   | 类型       | 说明                                               | 必填 |
 | ---------- | -------- | ---------- | -------------------------------------------------- | ---- |
 | status     | 状态      | int        | 0: 成功，1: 失败                           | y    |
-| data       | 响应数据   |  | 见示例 | n   |
+| data       | 响应数据   |  | 见下表 | n   |
 | message    | 错误消息   | String     |                                 | n    |
 
+data格式
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| id  | 项目部署记录id | int    |  |     |
+| projectId | 项目id | int | | |
+| projectName | 项目名称 | string | | |
+| status | 部署状态 | int | | |
+| version | 版本信息 | string | | |
+| changeLog | 版本更新信息 | string | | |
+| developers | 开发人员 | string | | |
+| testers | 测试人员 | string | | |
+| deployedAt | 部署时间 | string | | |
+| totalTime | 本次迭代开发总时间（单位：天） | int | | |
+| note | 备注 | string |                  |     |
+| creator | 创建人名称 | string | |  |
+| updater | 最近更新人名称 | string | |  |
+| createdAt | 创建时间     | string | "2020-05-25 17:00:03+08" ||
+| updatedAt | 最近更新时间 | string | "2020-05-25 17:00:03+08" ||
+| isDeleted | 删除标记     | int    |                          ||
+| count     | 总条数       | int    |                          ||
+| index     | 第几页       | int    |                          ||
+| pageSize  | 每页多少数据 | int    |                          ||
+| size      | 总页数       | int    |                          ||
 
 示例
+
 #### Request
 **GET** /v1/deployments?projectId=1&status=1&pageNo=1&pageSize=10
 
@@ -98,8 +123,29 @@ GET /v1/deployments/{id}
 | 参数名  | 参数定义 | 类型   | 说明             | 必填 |
 | ------- | -------- | ------ | ---------------- | ---- |
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
-| data    | 响应数据 |        | 见示例           | n    |
+| data    | 响应数据 |        | 见下表           | n    |
 | message | 错误消息 | String |                  | n    |
+
+data格式
+
+| 参数名  | 参数定义 | 类型   | 说明             | 必填 |
+| ------- | -------- | ------ | ---------------- | ---- |
+| id  | 项目部署记录id | int    |  |     |
+| projectId | 项目id | int | | |
+| projectName | 项目名称 | string | | |
+| status | 部署状态 | int | | |
+| version | 版本信息 | string | | |
+| changeLog | 版本更新信息 | string | | |
+| developers | 开发人员 | string | | |
+| testers | 测试人员 | string | | |
+| deployedAt | 部署时间 | string | | |
+| totalTime | 本次迭代开发总时间（单位：天） | int | | |
+| note | 备注 | string |                  |     |
+| creator | 创建人名称 | string | |  |
+| updater | 最近更新人名称 | string | |  |
+| createdAt | 创建时间     | string | "2020-05-25 17:00:03+08" ||
+| updatedAt | 最近更新时间 | string | "2020-05-25 17:00:03+08" ||
+| isDeleted | 删除标记     | int    |                          ||
 
 示例
 
@@ -261,7 +307,7 @@ PUT `/v1/deployments`
 | 参数名  | 参数定义 | 类型   | 说明             | 必填 |
 | ------- | -------- | ------ | ---------------- | ---- |
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
-| data    | 响应数据 |        | 见示例           | n    |
+| data    | 响应数据 |        |                  | n    |
 | message | 错误消息 | String |                  | n    |
 
 示例

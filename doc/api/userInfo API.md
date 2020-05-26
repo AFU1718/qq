@@ -19,8 +19,27 @@ GET `/v1/userInfo`
 | 参数名  | 参数定义 | 类型   | 说明             | 必填 |
 | ------- | -------- | ------ | ---------------- | ---- |
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
-| data    | 响应数据 |        | 见示例           | n    |
+| data    | 响应数据 |        | 见下表           | n    |
 | message | 错误消息 | String |                  | n    |
+
+data格式
+
+| 参数名  | 参数定义 | 类型   | 说明             |
+| ------- | -------- | ------ | ---------------- |
+| id        | 用户id       | int    |                          |
+| name  | 用户     | string |                          |
+| roleId    | 角色id       | int |                          |
+| roleName | 角色名称 | string | |
+| createdAt | 创建时间     | string | "2020-05-25 17:00:03+08" |
+| updatedAt | 最近更新时间 | string | "2020-05-25 17:00:03+08" |
+| isDeleted | 删除标记     | int    |                          |
+| count     | 总条数       | int    |                          |
+| index     | 第几页       | int    |                          |
+| pageSize  | 每页多少数据 | int    |                          |
+| size      | 总页数       | int    |                          |
+
+
+
 
 示例
 
@@ -81,8 +100,21 @@ GET /v1/userInfo/{id}
 | 参数名  | 参数定义 | 类型   | 说明             | 必填 |
 | ------- | -------- | ------ | ---------------- | ---- |
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
-| data    | 响应数据 |        | 见示例           | n    |
+| data    | 响应数据 |        | 见下表           | n    |
 | message | 错误消息 | String |                  | n    |
+
+data格式
+
+| 参数名    | 参数定义     | 类型   | 说明                     | 必填 |
+| --------- | ------------ | ------ | ------------------------ | ---- |
+| id        | 用户id       | int    |                          |      |
+| name      | 用户         | string |                          |      |
+| roleId    | 角色id       | int    |                          |      |
+| roleName  | 角色名称     | string |                          |      |
+| createdAt | 创建时间     | string | "2020-05-25 17:00:03+08" |      |
+| updatedAt | 最近更新时间 | string | "2020-05-25 17:00:03+08" |      |
+| isDeleted | 删除标记     | int    |                          |      |
+
 
 示例
 
@@ -124,7 +156,7 @@ POST `/v1/userInfo`
 | 参数名  | 参数定义 | 类型   | 说明             | 必填 |
 | ------- | -------- | ------ | ---------------- | ---- |
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
-| data    | 响应数据 |        | 见示例           | n    |
+| data    | 响应数据 |        |                  | n    |
 | message | 错误消息 | String |                  | n    |
 
 示例
@@ -152,7 +184,7 @@ POST `/v1/userInfo`
 
 
 
-## 删除单个角色
+## 删除单个用户
 
 DELETE /v1/userInfo/{id}
 
@@ -198,8 +230,9 @@ PUT `/v1/userInfo`
 | 参数名    | 参数定义     | 类型   | 说明 | 必填id |
 | --------- | ------------ | ------ | ---- | ------ |
 | id        | 用户id       | int    |      | y      |
-| roleName  | 角色名称     | string |      | y      |
-| note      | 备注         | string |      | y      |
+| name      | 用户名       | string |      | y      |
+| password  | 用户密码     | string |      | y      |
+| roleId    | 角色id       | int    |      | y      |
 | createdAt | 创建时间     | string |      | y      |
 | updatedAt | 最近更新时间 | string |      | y      |
 | isDeleted | 删除标记     | int    |      | y      |
@@ -256,6 +289,13 @@ GET /v1/userInfo/nameAndId
 | status  | 状态     | int    | 0: 成功，1: 失败 | y    |
 | data    | 响应数据 |        | 见示例           | n    |
 | message | 错误消息 | String |                  | n    |
+
+data格式
+
+| 参数名       | 参数定义 | 类型   | 说明 | 必填 |
+| ------------ | -------- | ------ | ---- | ---- |
+| userInfoName | 用户名   | string |      |      |
+| userInfoId   | 用户id   | int    |      |      |
 
 示例
 
