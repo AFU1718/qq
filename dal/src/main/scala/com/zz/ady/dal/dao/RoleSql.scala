@@ -1,7 +1,7 @@
 package com.zz.ady.dal.dao
 
 import com.typesafe.scalalogging.Logger
-import com.zz.ady.idl.{Role, RoleNameAndId}
+import com.zz.ady.idl.{ReturnRole, Role, RoleNameAndId}
 //import com.zz.ady.dal.model.Role
 import doobie.implicits._
 import doobie.postgres.implicits._
@@ -68,15 +68,15 @@ trait RoleSql extends Sql {
         """.stripMargin ++ whereAndOpt(f1)).update
   }
 
-  def queryRoleSql( roleName: String, pageNo: Int, pageSize: Int
-                     ): doobie.Query0[Role] = {
+  def queryRoleSql(optionRoleName: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]
+                  ): doobie.Query0[ReturnRole] = {
+    val pageNo = optionPageNo.getOrElse(1)
+    val pageSize = optionPageSize.getOrElse(10)
     val offset = pageNo * pageSize - pageSize
-//    val f1 = Option(id).map(v => {
-//      if (v == -1) fr"1=1" else fr"r.id = $v"
-//    })
-    val f2 = Option(roleName).map(v => {
-      if ("" equals v) fr"1=1" else fr"r.role_name = $v"
-    })
+    //    val f1 = Option(id).map(v => {
+    //      if (v == -1) fr"1=1" else fr"r.id = $v"
+    //    })
+    val f2 = optionRoleName.map(v => fr"r.role_name = $v")
     val f3 = Option(0).map(v => fr"r.is_deleted = $v")
 
     val q =
@@ -85,21 +85,18 @@ trait RoleSql extends Sql {
               r.role_name,
               r.note,
               r.created_at,
-              r.updated_at,
-              r.is_deleted
+              r.updated_at
            FROM role r
            """.stripMargin ++ whereAndOpt(f2, f3) ++
         Fragment.const(s" order by created_at desc offset $offset limit $pageSize")
-    q.query[Role]
+    q.query[ReturnRole]
   }
 
-  def countRoleSql(roleName: String): doobie.Query0[Int] = {
-//    val f1 = Option(id).map(v => {
-//      if (v == -1) fr"1=1" else fr"r.id = $v"
-//    })
-    val f2 = Option(roleName).map(v => {
-      if ("" equals v) fr"1=1" else fr"r.role_name = $v"
-    })
+  def countRoleSql(optionRoleName: Option[String]): doobie.Query0[Int] = {
+    //    val f1 = Option(id).map(v => {
+    //      if (v == -1) fr"1=1" else fr"r.id = $v"
+    //    })
+    val f2 = optionRoleName.map(v => fr"r.role_name = $v")
     val f3 = Option(0).map(v => fr"r.is_deleted = $v")
     val q =
       fr"""SELECT
@@ -123,7 +120,7 @@ trait RoleSql extends Sql {
   }
 
 
-  def findRoleByIdSql(id: Int): doobie.Query0[Role] = {
+  def findRoleByIdSql(id: Int): doobie.Query0[ReturnRole] = {
     val f1 = Option(id).map(i => fr"id = $i")
     val f2 = Option(0).map(i => fr"is_deleted = $i")
     val q =
@@ -132,11 +129,10 @@ trait RoleSql extends Sql {
               role_name,
               note,
               created_at,
-              updated_at,
-              is_deleted
+              updated_at
            FROM role
            """.stripMargin ++ whereAndOpt(f1, f2) ++ fr""" limit 1;"""
-    q.query[Role]
+    q.query[ReturnRole]
   }
 
 }

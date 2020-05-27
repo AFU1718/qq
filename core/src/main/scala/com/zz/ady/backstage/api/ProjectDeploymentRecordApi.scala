@@ -7,7 +7,7 @@ import cats.effect.Effect
 import cats.implicits._
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.service.ProjectDeploymentRecordService
-import com.zz.ady.idl.{PostProjectDeploymentRecord, ProjectDeploymentRecord, ProjectDeploymentRecordList, ReturnProjectDeploymentRecord}
+import com.zz.ady.idl._
 //import com.zz.ady.dal.model.ProjectDeploymentRecord
 import org.http4s.{HttpRoutes, Request, Response}
 import doobie.util.transactor.Transactor
@@ -27,18 +27,18 @@ class ProjectDeploymentRecordApi[F[_]](xa: Transactor[F])(implicit val F: Effect
   private val service: ProjectDeploymentRecordService[F] = ProjectDeploymentRecordService[F](xa)
 
 //  private[this] object IdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("id")
-
-  private[this] object ProjectIdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("projectId")
-
-  private[this] object ProjectNameQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("projectName")
-
-  private[this] object StatusQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("status")
-
+//
+//  private[this] object ProjectIdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("projectId")
+//
+//  private[this] object ProjectNameQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("projectName")
+//
+//  private[this] object StatusQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("status")
+//
 //  private[this] object IsDeletedQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("isDeleted")
-
-  private[this] object PageNoQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageNo")
-
-  private[this] object PageSizeQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageSize")
+//
+//  private[this] object PageNoQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageNo")
+//
+//  private[this] object PageSizeQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageSize")
 
 
   def findProjectDeploymentRecordByIdR: HttpRoutes[F] = {
@@ -84,20 +84,15 @@ class ProjectDeploymentRecordApi[F[_]](xa: Transactor[F])(implicit val F: Effect
     }
   }
 
-  def queryProjectDeploymentRecordR: HttpRoutes[F] = {
-    HttpRoutes.of[F] {
-      case GET -> Root / "v1" / "deployments" :? ProjectIdQueryParamMatcher(projectId)
-        :? ProjectNameQueryParamMatcher(projectName)
-        :? StatusQueryParamMatcher(status)
-        :? PageNoQueryParamMatcher(pageNo) :? PageSizeQueryParamMatcher(pageSize) =>
-
-        val result: F[Pretty[ProjectDeploymentRecordList]] = for {
-          r <- service.queryProjectDeploymentRecord(projectId.getOrElse(-1), projectName.getOrElse(""), status.getOrElse(-1), pageNo.getOrElse(1), pageSize.getOrElse(10))
-        } yield Pretty(r)
-
-        result.flatMap(Ok(_))
+    def queryProjectDeploymentRecordR: HttpRoutes[F] = {
+      HttpRoutes.of[F] {
+        case req@POST -> Root / "v1" / "deployments" / "query" =>
+          val result: F[Pretty[ProjectDeploymentRecordList]] = req.as[QueryProjectDeploymentRecord].flatMap(query=>{
+            service.queryProjectDeploymentRecord(query.projectId,query.projectName,query.status,query.pageNo,query.pageSize)
+          }).map(Pretty(_))
+          result.flatMap(Ok(_))
+      }
     }
-  }
 
   override val publicR: HttpRoutes[F] = findProjectDeploymentRecordByIdR <+> createProjectDeploymentRecordR <+> deleteProjectDeploymentRecordR <+> updateProjectDeploymentRecordR <+> queryProjectDeploymentRecordR
 

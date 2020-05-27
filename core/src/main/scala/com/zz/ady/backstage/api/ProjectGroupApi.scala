@@ -6,7 +6,7 @@ import cats.effect.Effect
 import cats.implicits._
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.service.ProjectGroupService
-import com.zz.ady.idl.{PostProjectDeploymentRecord, PostProjectGroup, ProjectGroup, ProjectGroupList, ProjectGroupNameAndIdList, ReturnProjectGroup}
+import com.zz.ady.idl._
 //import com.zz.ady.dal.model.ProjectGroup
 import org.http4s.{HttpRoutes, Request, Response}
 import doobie.util.transactor.Transactor
@@ -83,11 +83,10 @@ class ProjectGroupApi[F[_]](xa: Transactor[F])(implicit val F: Effect[F], val sy
 
   def queryProjectGroupR: HttpRoutes[F] = {
     HttpRoutes.of[F] {
-      case GET -> Root / "v1" / "projectGroups" :? ProjectGroupNameQueryParamMatcher(projectGroupName)
-        :? PageNoQueryParamMatcher(pageNo) :? PageSizeQueryParamMatcher(pageSize) =>
-        val result: F[Pretty[ProjectGroupList]] = for {
-          r <- service.queryProjectGroup(projectGroupName.getOrElse(""), pageNo.getOrElse(1), pageSize.getOrElse(10))
-        } yield Pretty(r)
+      case req@POST -> Root / "v1" / "projectGroups" / "query" =>
+        val result: F[Pretty[ProjectGroupList]] = req.as[QueryProjectGroup].flatMap(query=>{
+          service.queryProjectGroup(query.projectGroupName,query.pageNo,query.pageSize)
+        }).map(Pretty(_))
         result.flatMap(Ok(_))
     }
   }

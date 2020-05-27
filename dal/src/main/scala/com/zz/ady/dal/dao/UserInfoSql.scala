@@ -71,21 +71,17 @@ trait UserInfoSql extends Sql {
         """.stripMargin ++ whereAndOpt(f1)).update
   }
 
-  def queryUserInfoSql(name: String, roleId: Int, roleName: String, pageNo: Int, pageSize: Int
-                  ): doobie.Query0[ReturnUserInfo] = {
+  def queryUserInfoSql(optionName: Option[String], optionRoleId: Option[Int], optionRoleName: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]
+                      ): doobie.Query0[ReturnUserInfo] = {
+    val pageNo = optionPageNo.getOrElse(1)
+    val pageSize = optionPageSize.getOrElse(10)
     val offset = pageNo * pageSize - pageSize
-//    val f1 = Option(id).map(v => {
-//      if (v == -1) fr"1=1" else fr"id = $v"
-//    })
-    val f2 = Option(name).map(v => {
-      if ("" equals v) fr"1=1" else fr"u.name = $v"
-    })
-    val f3 = Option(roleId).map(v => {
-      if (v == -1) fr"1=1" else fr"u.role_id = $v"
-    })
-    val f4 = Option(roleName).map(v => {
-      if ("" equals v) fr"1=1" else fr"u.role_name like ${"%" + v + "%"}"
-    })
+    //    val f1 = Option(id).map(v => {
+    //      if (v == -1) fr"1=1" else fr"id = $v"
+    //    })
+    val f2 = optionName.map(v => fr"u.name = $v")
+    val f3 = optionRoleId.map(v => fr"u.role_id = $v")
+    val f4 = optionRoleName.map(v => fr"r.role_name like ${"%" + v + "%"}")
     val f5 = Option(0).map(v => fr"u.is_deleted = $v")
 
     val q =
@@ -95,27 +91,20 @@ trait UserInfoSql extends Sql {
               u.role_id,
               r.role_name,
               u.created_at,
-              u.updated_at,
-              u.is_deleted
+              u.updated_at
            FROM user_info u left join role r on u.role_id = r.id
            """.stripMargin ++ whereAndOpt(f2, f3, f4, f5) ++
         Fragment.const(s" order by u.created_at desc offset $offset limit $pageSize")
     q.query[ReturnUserInfo]
   }
 
-  def countUserInfoSql(name: String, roleId: Int, roleName: String): doobie.Query0[Int] = {
-//    val f1 = Option(id).map(v => {
-//      if (v == -1) fr"1=1" else fr"id = $v"
-//    })
-    val f2 = Option(name).map(v => {
-      if ("" equals v) fr"1=1" else fr"u.name = $v"
-    })
-    val f3 = Option(roleId).map(v => {
-      if (v == -1) fr"1=1" else fr"u.role_id = $v"
-    })
-    val f4 = Option(roleName).map(v => {
-      if ("" equals v) fr"1=1" else fr"u.role_name like ${"%" + v + "%"}"
-    })
+  def countUserInfoSql(optionName: Option[String], optionRoleId: Option[Int], optionRoleName: Option[String]): doobie.Query0[Int] = {
+    //    val f1 = Option(id).map(v => {
+    //      if (v == -1) fr"1=1" else fr"id = $v"
+    //    })
+    val f2 = optionName.map(v => fr"u.name = $v")
+    val f3 = optionRoleId.map(v => fr"u.role_id = $v")
+    val f4 = optionRoleName.map(v => fr"r.role_name like ${"%" + v + "%"}")
     val f5 = Option(0).map(v => fr"u.is_deleted = $v")
     val q =
       fr"""SELECT
@@ -148,10 +137,9 @@ trait UserInfoSql extends Sql {
                u.role_id,
                r.role_name,
                u.created_at,
-               u.updated_at,
-               u.is_deleted
+               u.updated_at
            FROM user_info u left join role r on u.role_id = r.id
-           """.stripMargin ++ whereAndOpt(f1) ++ fr""" limit 1;"""
+           """.stripMargin ++ whereAndOpt(f1, f2) ++ fr""" limit 1;"""
     q.query[ReturnUserInfo]
   }
 

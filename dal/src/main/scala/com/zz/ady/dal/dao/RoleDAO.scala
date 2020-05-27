@@ -1,7 +1,7 @@
 package com.zz.ady.dal.dao
 
 import cats.effect.Sync
-import com.zz.ady.idl.{Role, RoleNameAndId}
+import com.zz.ady.idl.{ReturnRole, Role, RoleNameAndId}
 //import com.zz.ady.dal.model.Role
 import doobie.implicits._
 import doobie.util.transactor.Transactor
@@ -22,16 +22,16 @@ class RoleDAO[F[_] : Sync](xa: Transactor[F]) extends RoleSql {
   def updateRole(role: Role): F[Int] =
     updateRoleSql(role).run.transact(xa)
 
-  def queryRole(roleName: String, pageNo: Int, pageSize: Int): F[Vector[Role]] =
-    queryRoleSql(roleName, pageNo, pageSize).to[Vector].transact(xa)
+  def queryRole(optionRoleName: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]): F[Vector[ReturnRole]] =
+    queryRoleSql(optionRoleName, optionPageNo, optionPageSize).to[Vector].transact(xa)
 
-  def countRole(roleName: String): F[Int] =
-    countRoleSql(roleName).unique.transact(xa)
+  def countRole(optionRoleName: Option[String]): F[Int] =
+    countRoleSql(optionRoleName).unique.transact(xa)
 
   def findAllRole(): F[Vector[RoleNameAndId]] = {
     findAllRoleSql().to[Vector].transact(xa)
   }
-  def findRoleById(id: Int): F[Option[Role]] =
+  def findRoleById(id: Int): F[Option[ReturnRole]] =
     findRoleByIdSql(id).option.transact(xa)
 
 }

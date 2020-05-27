@@ -71,41 +71,40 @@ trait ProjectGroupSql extends Sql {
         """.stripMargin ++ whereAndOpt(f1)).update
   }
 
-  def queryProjectGroupSql(projectGroupName: String, pageNo: Int, pageSize: Int
-                                     ): doobie.Query0[ReturnProjectGroup] = {
+  def queryProjectGroupSql(optionProjectGroupName: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]
+                          ): doobie.Query0[ReturnProjectGroup] = {
+    val pageNo = optionPageNo.getOrElse(1)
+    val pageSize = optionPageSize.getOrElse(10)
     val offset = pageNo * pageSize - pageSize
-//    val f1 = Option(id).map(v => {
-//      if (v == -1) fr"1=1" else fr"pg.id = $v"
-//    })
-    val f2 = Option(projectGroupName).map(v => {
-      if ("" equals v) fr"1=1" else fr"pg.project_group_name like ${"%" + v + "%"}"
-    })
-    val f3= Option(0).map(v => fr"pg.is_deleted = $v")
+    //    val f1 = Option(id).map(v => {
+    //      if (v == -1) fr"1=1" else fr"pg.id = $v"
+    //    })
+    val f2 = optionProjectGroupName.map(v => fr"pg.project_group_name like ${"%" + v + "%"}")
+    val f3 = Option(0).map(v => fr"pg.is_deleted = $v")
 
     val q =
       fr"""SELECT
               pg.id,
               pg.project_group_name,
               pg.note,
+              pg.created_by,
+              pg.updated_by,
               u1.name as creator,
               u2.name as updater,
               pg.created_at,
-              pg.updated_at,
-              pg.is_deleted
+              pg.updated_at
               FROM project_group pg left join user_info u1 on pg.created_by = u1.id left join user_info u2 on pg.updated_by = u2.id
               """.stripMargin ++ whereAndOpt(f2, f3) ++
         Fragment.const(s" order by created_at desc offset $offset limit $pageSize")
     q.query[ReturnProjectGroup]
   }
 
-  def countProjectGroupSql(projectGroupName: String): doobie.Query0[Int] = {
-//    val f1 = Option(id).map(v => {
-//      if (v == -1) fr"1=1" else fr"pg.id = $v"
-//    })
-    val f2 = Option(projectGroupName).map(v => {
-      if ("" equals v) fr"1=1" else fr"pg.project_group_name like ${"%" + v + "%"}"
-    })
-    val f3= Option(0).map(v => fr"pg.is_deleted = $v")
+  def countProjectGroupSql(optionProjectGroupName: Option[String]): doobie.Query0[Int] = {
+    //    val f1 = Option(id).map(v => {
+    //      if (v == -1) fr"1=1" else fr"pg.id = $v"
+    //    })
+    val f2 = optionProjectGroupName.map(v => fr"pg.project_group_name like ${"%" + v + "%"}")
+    val f3 = Option(0).map(v => fr"pg.is_deleted = $v")
 
     val q =
       fr"""SELECT
@@ -136,13 +135,14 @@ trait ProjectGroupSql extends Sql {
               pg.id,
               pg.project_group_name,
               pg.note,
+              pg.created_by,
+              pg.updated_by,
               u1.name as creator,
               u2.name as updater,
               pg.created_at,
-              pg.updated_at,
-              pg.is_deleted
+              pg.updated_at
            FROM project_group pg left join user_info u1 on pg.created_by = u1.id left join user_info u2 on pg.updated_by = u2.id
-           """.stripMargin ++ whereAndOpt(f1,f2) ++ fr""" limit 1;"""
+           """.stripMargin ++ whereAndOpt(f1, f2) ++ fr""" limit 1;"""
     q.query[ReturnProjectGroup]
   }
 

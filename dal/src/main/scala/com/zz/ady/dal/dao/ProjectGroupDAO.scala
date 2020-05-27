@@ -24,11 +24,11 @@ class ProjectGroupDAO[F[_] : Sync](xa: Transactor[F]) extends ProjectGroupSql {
   def updateProjectGroup(projectGroup: ProjectGroup): F[Int] =
     updateProjectGroupSql(projectGroup).run.transact(xa)
 
-  def queryProjectGroup(projectGroupName: String, pageNo: Int, pageSize: Int): F[Vector[ReturnProjectGroup]] =
-    queryProjectGroupSql(projectGroupName, pageNo, pageSize).to[Vector].transact(xa)
+  def queryProjectGroup(optionProjectGroupName: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]): F[Vector[ReturnProjectGroup]] =
+    queryProjectGroupSql(optionProjectGroupName, optionPageNo, optionPageSize).to[Vector].transact(xa)
 
-  def countProjectGroup(projectGroupName: String): F[Int] =
-    countProjectGroupSql(projectGroupName).unique.transact(xa)
+  def countProjectGroup(optionProjectGroupName: Option[String]): F[Int] =
+    countProjectGroupSql(optionProjectGroupName).unique.transact(xa)
 
   def findAllProjectGroup(): F[Vector[ProjectGroupNameAndId]] = {
     findAllProjectGroupSql().to[Vector].transact(xa)

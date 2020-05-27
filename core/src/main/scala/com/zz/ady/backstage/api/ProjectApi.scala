@@ -6,7 +6,7 @@ import cats.effect.Effect
 import cats.implicits._
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.service.ProjectService
-import com.zz.ady.idl.{PostProject, Project, ProjectList, ProjectNameAndId, ProjectNameAndIdList, ReturnProject}
+import com.zz.ady.idl.{PostProject, Project, ProjectList, ProjectNameAndId, ProjectNameAndIdList, QueryProject, ReturnProject}
 //import com.zz.ady.dal.model.Project
 import org.http4s.{HttpRoutes, Request, Response}
 import doobie.util.transactor.Transactor
@@ -26,20 +26,20 @@ class ProjectApi[F[_]](xa: Transactor[F])(implicit val F: Effect[F], val system:
   private val service: ProjectService[F] = ProjectService[F](xa)
 
 //  private[this] object IdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("id")
-
-  private[this] object ProjectGroupIdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("projectGroupId")
-
-  private[this] object ProjectGroupNameQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("projectGroupName")
-
-  private[this] object ProjectNameQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("projectName")
-
-  private[this] object ProjectTypeQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("projectType")
-
+//
+//  private[this] object ProjectGroupIdQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("projectGroupId")
+//
+//  private[this] object ProjectGroupNameQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("projectGroupName")
+//
+//  private[this] object ProjectNameQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("projectName")
+//
+//  private[this] object ProjectTypeQueryParamMatcher extends OptionalQueryParamDecoderMatcher[String]("projectType")
+//
 //  private[this] object IsDeletedQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("isDeleted")
-
-  private[this] object PageNoQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageNo")
-
-  private[this] object PageSizeQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageSize")
+//
+//  private[this] object PageNoQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageNo")
+//
+//  private[this] object PageSizeQueryParamMatcher extends OptionalQueryParamDecoderMatcher[Int]("pageSize")
 
 
   def findProjectByIdR: HttpRoutes[F] = {
@@ -89,17 +89,14 @@ class ProjectApi[F[_]](xa: Transactor[F])(implicit val F: Effect[F], val system:
 
   def queryProjectR: HttpRoutes[F] = {
     HttpRoutes.of[F] {
-      case GET -> Root / "v1" / "projects"  :? ProjectGroupIdQueryParamMatcher(projectGroupId)
-        :? ProjectGroupNameQueryParamMatcher(projectGroupName)
-        :? ProjectNameQueryParamMatcher(projectName) :? ProjectTypeQueryParamMatcher(projectType)
-        :? PageNoQueryParamMatcher(pageNo) :? PageSizeQueryParamMatcher(pageSize) =>
-        val result: F[Pretty[ProjectList]] = for {
-          r <- service.queryProject( projectGroupId.getOrElse(-1), projectGroupName.getOrElse(""), projectName.getOrElse(""), projectType.getOrElse(""), pageNo.getOrElse(1), pageSize.getOrElse(10))
-        } yield Pretty(r)
+      case req@POST -> Root / "v1" / "projects" / "query" =>
+        val result: F[Pretty[ProjectList]] = req.as[QueryProject].flatMap(query=>{
+          service.queryProject(query.projectGroupId,query.projectGroupName,query.projectName,query.projectType,query.pageNo,query.pageSize)
+        }).map(Pretty(_))
         result.flatMap(Ok(_))
-
     }
   }
+
   def findAllProjectR: HttpRoutes[F] = {
     HttpRoutes.of[F] {
       case GET -> Root / "v1" / "projects" / "nameAndId" =>

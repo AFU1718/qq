@@ -44,16 +44,16 @@ class UserInfoService[F[_] : Effect](xa: Transactor[F]) {
     } yield a
   }
 
-  def queryUserInfo(name: String, roleId: Int, roleName: String, pageNo: Int, pageSize: Int): F[UserInfoList] = {
+  def queryUserInfo(optionName: Option[String], optionRoleId: Option[Int], optionRoleName: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]): F[UserInfoList] = {
     for {
-      returnUserInfoList <- userInfoDAO.queryUserInfo(name, roleId, roleName, pageNo, pageSize)
-      count <- userInfoDAO.countUserInfo(name, roleId, roleName)
+      returnUserInfoList <- userInfoDAO.queryUserInfo(optionName, optionRoleId, optionRoleName, optionPageNo, optionPageSize)
+      count <- userInfoDAO.countUserInfo(optionName, optionRoleId, optionRoleName)
     } yield {
       UserInfoList(
         count = count,
-        size = Math.ceil(count * 1.0 / pageSize).toInt,
-        index = pageNo,
-        pageSize = pageSize,
+        size = Math.ceil(count * 1.0 / optionPageSize.getOrElse(10)).toInt,
+        index = optionPageNo.getOrElse(1),
+        pageSize = optionPageSize.getOrElse(10),
         returnUserInfoList = returnUserInfoList.toList
       )
     }

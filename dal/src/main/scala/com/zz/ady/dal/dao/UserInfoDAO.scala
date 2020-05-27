@@ -22,11 +22,11 @@ class UserInfoDAO[F[_] : Sync](xa: Transactor[F]) extends UserInfoSql {
   def updateUserInfo(userInfo: UserInfo): F[Int] =
     updateUserInfoSql(userInfo).run.transact(xa)
 
-  def queryUserInfo(name: String, roleId: Int, roleName: String, pageNo: Int, pageSize: Int): F[Vector[ReturnUserInfo]] =
-    queryUserInfoSql(name, roleId, roleName, pageNo, pageSize).to[Vector].transact(xa)
+  def queryUserInfo(optionName: Option[String], optionRoleId: Option[Int], optionRoleName: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]): F[Vector[ReturnUserInfo]] =
+    queryUserInfoSql(optionName, optionRoleId, optionRoleName, optionPageNo, optionPageSize).to[Vector].transact(xa)
 
-  def countUserInfo(name: String, roleId: Int, roleName: String): F[Int] =
-    countUserInfoSql(name, roleId, roleName).unique.transact(xa)
+  def countUserInfo(optionName: Option[String], optionRoleId: Option[Int], optionRoleName: Option[String]): F[Int] =
+    countUserInfoSql(optionName, optionRoleId, optionRoleName).unique.transact(xa)
 
   def findAllUserInfo(): F[Vector[UserInfoNameAndId]] = {
     findAllUserInfoSql().to[Vector].transact(xa)

@@ -43,7 +43,6 @@ message ReturnUserInfo {
   string           role_name = 4;       // 角色名称
   string           created_at = 5;      // 创建时间
   string           updated_at = 6;      // 最近更新时间
-  int32            is_deleted = 7;      // 删除标记
 }
 
 message UserInfoNameAndIdList {
@@ -53,6 +52,14 @@ message UserInfoNameAndIdList {
 message UserInfoNameAndId {
   string           user_info_name = 1; // 用户名
   int32            user_info_id = 2;   // 用户id
+}
+
+message QueryUserInfo {
+  google.protobuf.StringValue     name = 1;                    // 用户名称
+  google.protobuf.Int32Value      role_id = 2;                 // 角色id
+  google.protobuf.StringValue     role_name = 3;               // 角色名称
+  google.protobuf.Int32Value      page_no = 4;                 // 第几页
+  google.protobuf.Int32Value      page_size = 5;               // 每页多少数据
 }
 
 

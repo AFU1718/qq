@@ -77,24 +77,18 @@ trait ProjectSql extends Sql {
         """.stripMargin ++ whereAndOpt(f1)).update
   }
 
-  def queryProjectSql(projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String, pageNo: Int, pageSize: Int
-                          ): doobie.Query0[ReturnProject] = {
+  def queryProjectSql(optionProjectGroupId: Option[Int], optionProjectGroupName: Option[String], optionProjectName: Option[String], optionProjectType: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]
+                     ): doobie.Query0[ReturnProject] = {
+    val pageNo = optionPageNo.getOrElse(1)
+    val pageSize = optionPageSize.getOrElse(10)
     val offset = pageNo * pageSize - pageSize
-//    val f1 = Option(id).map(v => {
-//      if (v == -1) fr"1=1" else fr"p.id = $v"
-//    })
-    val f2 = Option(projectGroupId).map(v => {
-      if (v == -1) fr"1=1" else fr"p.project_group_id = $v"
-    })
-    val f3 = Option(projectGroupName).map(v => {
-      if ("" equals v) fr"1=1" else fr"p.project_group_name like ${"%" + v + "%"}"
-    })
-    val f4 = Option(projectName).map(v => {
-      if ("" equals v) fr"1=1" else fr"p.project_name like ${"%" + v + "%"}"
-    })
-    val f5 = Option(projectType).map(v => {
-      if ("" equals v) fr"1=1" else fr"p.project_type = $v"
-    })
+    //    val f1 = Option(id).map(v => {
+    //      if (v == -1) fr"1=1" else fr"p.id = $v"
+    //    })
+    val f2 = optionProjectGroupId.map(v => fr"p.project_group_id = $v")
+    val f3 = optionProjectGroupName.map(v => fr"p.project_group_name like ${"%" + v + "%"}")
+    val f4 = optionProjectName.map(v => fr"p.project_name like ${"%" + v + "%"}")
+    val f5 = optionProjectType.map(v => fr"p.project_type = $v")
     val f6 = Option(0).map(v => fr"p.is_deleted = $v")
 
     val q =
@@ -105,34 +99,27 @@ trait ProjectSql extends Sql {
               p.project_name,
               p.project_type,
               p.note,
+              p.created_by,
+              p.updated_by,
               u1.name as creator,
               u2.name as updater,
               p.created_at,
-              p.updated_at,
-              p.is_deleted
+              p.updated_at
            FROM project p left join user_info u1 on p.created_by = u1.id left join user_info u2 on p.updated_by = u2.id
            left join project_group pg on p.project_group_id = pg.id
-           """.stripMargin ++ whereAndOpt( f2, f3, f4, f5, f6) ++
+           """.stripMargin ++ whereAndOpt(f2, f3, f4, f5, f6) ++
         Fragment.const(s" order by p.created_at desc offset $offset limit $pageSize")
     q.query[ReturnProject]
   }
 
-  def countProjectSql(projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String): doobie.Query0[Int] = {
-//    val f1 = Option(id).map(v => {
-//      if (v == -1) fr"1=1" else fr"p.id = $v"
-//    })
-    val f2 = Option(projectGroupId).map(v => {
-      if (v == -1) fr"1=1" else fr"p.project_group_id = $v"
-    })
-    val f3 = Option(projectGroupName).map(v => {
-      if ("" equals v) fr"1=1" else fr"p.project_group_name like ${"%" + v + "%"}"
-    })
-    val f4 = Option(projectName).map(v => {
-      if ("" equals v) fr"1=1" else fr"p.project_name like ${"%" + v + "%"}"
-    })
-    val f5 = Option(projectType).map(v => {
-      if ("" equals v) fr"1=1" else fr"p.project_type = $v"
-    })
+  def countProjectSql(optionProjectGroupId: Option[Int], optionProjectGroupName: Option[String], optionProjectName: Option[String], optionProjectType: Option[String]): doobie.Query0[Int] = {
+    //    val f1 = Option(id).map(v => {
+    //      if (v == -1) fr"1=1" else fr"p.id = $v"
+    //    })
+    val f2 = optionProjectGroupId.map(v => fr"p.project_group_id = $v")
+    val f3 = optionProjectGroupName.map(v => fr"p.project_group_name like ${"%" + v + "%"}")
+    val f4 = optionProjectName.map(v => fr"p.project_name like ${"%" + v + "%"}")
+    val f5 = optionProjectType.map(v => fr"p.project_type = $v")
     val f6 = Option(0).map(v => fr"p.is_deleted = $v")
     val q =
       fr"""SELECT
@@ -167,14 +154,15 @@ trait ProjectSql extends Sql {
               p.project_name,
               p.project_type,
               p.note,
+              p.created_by,
+              p.updated_by,
               u1.name as creator,
               u2.name as updater,
               p.created_at,
-              p.updated_at,
-              p.is_deleted
+              p.updated_at
            FROM project p left join user_info u1 on p.created_by = u1.id left join user_info u2 on p.updated_by = u2.id
            left join project_group pg on p.project_group_id = pg.id
-           """.stripMargin ++ whereAndOpt(f1,f2) ++ fr""" limit 1;"""
+           """.stripMargin ++ whereAndOpt(f1, f2) ++ fr""" limit 1;"""
     q.query[ReturnProject]
   }
 

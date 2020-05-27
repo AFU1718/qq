@@ -96,22 +96,18 @@ trait ProjectDeploymentRecordSql extends Sql {
         """.stripMargin ++ whereAndOpt(f1)).update
   }
 
-  def queryProjectDeploymentRecordSql(projectId: Int, projectName: String, status: Int, pageNo: Int, pageSize: Int
+  def queryProjectDeploymentRecordSql(optionProjectId: Option[Int], optionProjectName: Option[String], optionStatus: Option[Int], optionPageNo: Option[Int], optionPageSize: Option[Int]
                                      ): doobie.Query0[ReturnProjectDeploymentRecord] = {
+    val pageNo = optionPageNo.getOrElse(1)
+    val pageSize = optionPageSize.getOrElse(10)
     val offset = pageNo * pageSize - pageSize
-//    val f1 = Option(id).map(v => {
-//      if (v == -1) fr"1=1" else fr"pdr.id = $v"
-//    })
-    val f2 = Option(projectId).map(v => {
-      if (v == -1) fr"1=1" else fr"pdr.project_id = $v"
-    })
-    val f3 = Option(projectName).map(v => {
-      if ("" equals v) fr"1=1" else fr"p.project_name like ${"%" + v + "%"}"
-    })
-    val f4 = Option(status).map(v => {
-      if (v == -1) fr"1=1" else fr"pdr.status = $v"
-    })
-    val f5= Option(0).map(v => fr"pdr.is_deleted = $v")
+    //    val f1 = Option(id).map(v => {
+    //      if (v == -1) fr"1=1" else fr"pdr.id = $v"
+    //    })
+    val f2 = optionProjectId.map(v => fr"pdr.project_id = $v")
+    val f3 = optionProjectName.map(v => fr"p.project_name like ${"%" + v + "%"}")
+    val f4 = optionStatus.map(v => fr"pdr.status = $v")
+    val f5 = Option(0).map(v => fr"pdr.is_deleted = $v")
 
     val q =
       fr"""SELECT
@@ -126,11 +122,12 @@ trait ProjectDeploymentRecordSql extends Sql {
                   pdr.deployed_at,
                   pdr.total_time,
                   pdr.note,
+                  pdr.created_by,
+                  pdr.updated_by,
                   u1.name as creator,
                   u2.name as updater,
                   pdr.created_at,
-                  pdr.updated_at,
-                  pdr.is_deleted
+                  pdr.updated_at
               FROM project_deployment_record pdr left join user_info u1 on pdr.created_by = u1.id
               left join user_info u2 on pdr.updated_by = u2.id left join project p on pdr.project_id = p.id
               """.stripMargin ++ whereAndOpt(f2, f3, f4, f5) ++
@@ -138,20 +135,14 @@ trait ProjectDeploymentRecordSql extends Sql {
     q.query[ReturnProjectDeploymentRecord]
   }
 
-  def countProjectDeploymentRecordSql(projectId: Int, projectName: String, status: Int): doobie.Query0[Int] = {
-//    val f1 = Option(id).map(v => {
-//      if (v == -1) fr"1=1" else fr"pdr.id = $v"
-//    })
-    val f2 = Option(projectId).map(v => {
-      if (v == -1) fr"1=1" else fr"pdr.project_id = $v"
-    })
-    val f3 = Option(projectName).map(v => {
-      if ("" equals v) fr"1=1" else fr"p.project_name like ${"%" + v + "%"}"
-    })
-    val f4 = Option(status).map(v => {
-      if (v == -1) fr"1=1" else fr"pdr.status = $v"
-    })
-    val f5= Option(0).map(v => fr"pdr.is_deleted = $v")
+  def countProjectDeploymentRecordSql(optionProjectId: Option[Int], optionProjectName: Option[String], optionStatus: Option[Int]): doobie.Query0[Int] = {
+    //    val f1 = Option(id).map(v => {
+    //      if (v == -1) fr"1=1" else fr"pdr.id = $v"
+    //    })
+    val f2 = optionProjectId.map(v => fr"pdr.project_id = $v")
+    val f3 = optionProjectName.map(v => fr"p.project_name like ${"%" + v + "%"}")
+    val f4 = optionStatus.map(v => fr"pdr.status = $v")
+    val f5 = Option(0).map(v => fr"pdr.is_deleted = $v")
 
     val q =
       fr"""SELECT
@@ -177,14 +168,15 @@ trait ProjectDeploymentRecordSql extends Sql {
                   pdr.deployed_at,
                   pdr.total_time,
                   pdr.note,
+                  pdr.created_by,
+                  pdr.updated_by,
                   u1.name as creator,
                   u2.name as updater,
                   pdr.created_at,
-                  pdr.updated_at,
-                  pdr.is_deleted
+                  pdr.updated_at
               FROM project_deployment_record pdr left join user_info u1 on pdr.created_by = u1.id left join user_info u2 on pdr.updated_by = u2.id
               left join project p on pdr.project_id = p.id
-              """.stripMargin ++ whereAndOpt(f1,f2) ++ fr""" limit 1;"""
+              """.stripMargin ++ whereAndOpt(f1, f2) ++ fr""" limit 1;"""
     q.query[ReturnProjectDeploymentRecord]
   }
 

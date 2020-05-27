@@ -24,7 +24,15 @@ message RoleList {
   int32                           index = 2;                     // 页码索引
   int32                           page_size = 3;                 // 每页大小
   int32                           size = 4;                      // 共多少页
-  repeated Role                   role_list = 5;                 // 角色列表
+  repeated ReturnRole             return_role_list = 5;          // 角色列表
+}
+
+message ReturnRole {
+  int32            id = 1;              // 角色id
+  string           role_name=2;         // 角色名
+  string           note = 3;            // 备注
+  string           created_at = 4;      // 创建时间
+  string           updated_at = 5;      // 最近更新时间
 }
 
 // 新建角色
@@ -42,3 +50,8 @@ message RoleNameAndId {
   int32            role_id = 2;   // 角色id
 }
 
+message QueryRole {
+  google.protobuf.StringValue     role_name = 1;               // 角色名称
+  google.protobuf.Int32Value      page_no = 2;                 // 第几页
+  google.protobuf.Int32Value      page_size = 3;               // 每页多少数据
+}

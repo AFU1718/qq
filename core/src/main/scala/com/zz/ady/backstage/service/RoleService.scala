@@ -6,7 +6,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.Logger
 import com.zz.ady.backstage.config.AppConfig
 import com.zz.ady.dal.dao.RoleDAO
-import com.zz.ady.idl.{PostRole, Role, RoleList, RoleNameAndIdList}
+import com.zz.ady.idl.{PostRole, ReturnRole, Role, RoleList, RoleNameAndIdList}
 //import com.zz.ady.dal.model.Role
 import doobie.util.transactor.Transactor
 
@@ -44,17 +44,17 @@ class RoleService[F[_] : Effect](xa: Transactor[F]) {
     } yield a
   }
 
-  def queryRole(roleName: String, pageNo: Int, pageSize: Int): F[RoleList] = {
+  def queryRole(optionRoleName: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]): F[RoleList] = {
     for {
-      roleList <-  roleDAO.queryRole(roleName, pageNo, pageSize)
-      count <- roleDAO.countRole(roleName)
+      returnRoleList <-  roleDAO.queryRole(optionRoleName, optionPageNo, optionPageSize)
+      count <- roleDAO.countRole(optionRoleName)
     } yield {
       RoleList(
         count = count,
-        size = Math.ceil(count * 1.0 / pageSize).toInt,
-        index = pageNo,
-        pageSize = pageSize,
-        roleList = roleList.toList
+        size = Math.ceil(count * 1.0 / optionPageSize.getOrElse(10)).toInt,
+        index = optionPageNo.getOrElse(1),
+        pageSize = optionPageSize.getOrElse(10),
+        returnRoleList = returnRoleList.toList
       )
     }
 
@@ -70,7 +70,7 @@ class RoleService[F[_] : Effect](xa: Transactor[F]) {
     }
   }
 
-  def findRoleById(id: Int): F[Option[Role]] = {
+  def findRoleById(id: Int): F[Option[ReturnRole]] = {
     for {
       a <- roleDAO.findRoleById(id)
     } yield a

@@ -42,11 +42,12 @@ message ReturnProjectGroup {
   int32            id = 1;                   // 项目组id
   string           project_group_name = 2;   // 项目组名称
   string           note = 3;                 // 备注
-  string           creator = 4;              // 创建人
-  string           updater = 5;              // 最近更新人
-  string           created_at = 6;           // 创建时间
-  string           updated_at = 7;           // 最近更新时间
-  int32            is_deleted = 8;           // 删除标记
+  int32            created_by = 4;           // 创建人Id
+  int32            updated_by = 5;           // 最近更新人id
+  string           creator = 6;              // 创建人
+  string           updater = 7;              // 最近更新人
+  string           created_at = 8;           // 创建时间
+  string           updated_at = 9;           // 最近更新时间
 }
 
 message ProjectGroupNameAndIdList {
@@ -56,6 +57,12 @@ message ProjectGroupNameAndIdList {
 message ProjectGroupNameAndId {
   string           project_group_name = 1; // 项目组名称
   int32            project_group_id = 2;   // 项目组id
+}
+
+message QueryProjectGroup {
+  google.protobuf.StringValue      project_group_name = 1;        // 项目组名称
+  google.protobuf.Int32Value       page_no = 2;                   // 第几页
+  google.protobuf.Int32Value       page_size = 3;                 // 每页多少数据
 }
 
 

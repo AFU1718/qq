@@ -22,11 +22,11 @@ class ProjectDAO[F[_] : Sync](xa: Transactor[F]) extends ProjectSql {
   def updateProject(project: Project): F[Int] =
     updateProjectSql(project).run.transact(xa)
 
-  def queryProject(projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String, pageNo: Int, pageSize: Int): F[Vector[ReturnProject]] =
-    queryProjectSql(projectGroupId, projectGroupName, projectName, projectType, pageNo, pageSize).to[Vector].transact(xa)
+  def queryProject(optionProjectGroupId: Option[Int], optionProjectGroupName: Option[String], optionProjectName: Option[String], optionProjectType: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]): F[Vector[ReturnProject]] =
+    queryProjectSql(optionProjectGroupId, optionProjectGroupName, optionProjectName, optionProjectType, optionPageNo, optionPageSize).to[Vector].transact(xa)
 
-  def countProject(projectGroupId: Int, projectGroupName: String, projectName: String, projectType: String): F[Int] =
-    countProjectSql(projectGroupId, projectGroupName, projectName, projectType).unique.transact(xa)
+  def countProject(optionProjectGroupId: Option[Int], optionProjectGroupName: Option[String], optionProjectName: Option[String], optionProjectType: Option[String]): F[Int] =
+    countProjectSql(optionProjectGroupId, optionProjectGroupName, optionProjectName, optionProjectType).unique.transact(xa)
 
   def findAllProject(): F[Vector[ProjectNameAndId]] = {
     findAllProjectSql().to[Vector].transact(xa)

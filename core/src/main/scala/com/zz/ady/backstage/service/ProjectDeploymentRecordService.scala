@@ -56,16 +56,16 @@ class ProjectDeploymentRecordService[F[_] : Effect](xa: Transactor[F]) {
     } yield a
   }
 
-  def queryProjectDeploymentRecord(projectId: Int, projectName: String, status: Int, pageNo: Int, pageSize: Int): F[ProjectDeploymentRecordList] = {
+  def queryProjectDeploymentRecord(optionProjectId: Option[Int], optionProjectName: Option[String], optionStatus: Option[Int], optionPageNo: Option[Int], optionPageSize: Option[Int]): F[ProjectDeploymentRecordList] = {
     for {
-      returnProjectDeploymentRecordList <- projectDeploymentRecordDAO.queryProjectDeploymentRecord(projectId, projectName, status, pageNo, pageSize)
-      count <- projectDeploymentRecordDAO.countProjectDeploymentRecord(projectId, projectName, status)
+      returnProjectDeploymentRecordList <- projectDeploymentRecordDAO.queryProjectDeploymentRecord(optionProjectId, optionProjectName, optionStatus, optionPageNo, optionPageSize)
+      count <- projectDeploymentRecordDAO.countProjectDeploymentRecord(optionProjectId, optionProjectName, optionStatus)
     } yield {
       ProjectDeploymentRecordList(
         count = count,
-        size = Math.ceil(count * 1.0 / pageSize).toInt,
-        index = pageNo,
-        pageSize = pageSize,
+        index = optionPageNo.getOrElse(1),
+        pageSize = optionPageSize.getOrElse(10),
+        size = Math.ceil(count * 1.0 / optionPageSize.getOrElse(10)).toInt,
         returnProjectDeploymentRecordList = returnProjectDeploymentRecordList.toList
       )
     }

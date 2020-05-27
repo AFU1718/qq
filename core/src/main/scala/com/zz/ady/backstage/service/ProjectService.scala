@@ -49,16 +49,16 @@ class ProjectService[F[_] : Effect](xa: Transactor[F]) {
     } yield a
   }
 
-  def queryProject(projectGroupId: Int, projectGroupName:String, projectName: String, projectType: String, pageNo: Int, pageSize: Int): F[ProjectList] = {
+  def queryProject(optionProjectGroupId: Option[Int], optionProjectGroupName: Option[String], optionProjectName: Option[String], optionProjectType: Option[String], optionPageNo: Option[Int], optionPageSize: Option[Int]): F[ProjectList] = {
     for {
-      returnProjectList <- projectDAO.queryProject(projectGroupId, projectGroupName, projectName, projectType, pageNo, pageSize)
-      count <- projectDAO.countProject(projectGroupId, projectGroupName, projectName, projectType)
+      returnProjectList <- projectDAO.queryProject(optionProjectGroupId, optionProjectGroupName, optionProjectName, optionProjectType, optionPageNo, optionPageSize)
+      count <- projectDAO.countProject(optionProjectGroupId, optionProjectGroupName, optionProjectName, optionProjectType)
     } yield {
       ProjectList(
         count = count,
-        size = Math.ceil(count * 1.0 / pageSize).toInt,
-        index = pageNo,
-        pageSize = pageSize,
+        size = Math.ceil(count * 1.0 / optionPageSize.getOrElse(10)).toInt,
+        index = optionPageNo.getOrElse(1),
+        pageSize = optionPageSize.getOrElse(10),
         returnProjectList = returnProjectList.toList
       )
     }
