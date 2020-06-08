@@ -28,7 +28,7 @@ message ProjectList {
   int32                           index = 2;                     // 页码索引
   int32                           page_size = 3;                 // 每页大小
   int32                           size = 4;                      // 共多少页
-  repeated ReturnProject          return_project_list = 5;       // 项目列表
+  repeated ReturnProject          items = 5;       // 项目列表
 }
 
 // 新建项目

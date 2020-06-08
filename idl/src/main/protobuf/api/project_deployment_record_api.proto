@@ -29,11 +29,11 @@ message ProjectDeploymentRecord {
 
 // 项目部署记录列表
 message ProjectDeploymentRecordList {
-  int32                            count = 1;                           // 总数
-  int32                            index = 2;                           // 页码索引
+  int32                            total = 1;                           // 总数
+  int32                            page_no = 2;                           // 页码索引
   int32                            page_size = 3;                       // 每页大小
   int32                            size = 4;                            // 共多少页
-  repeated ReturnProjectDeploymentRecord return_project_deployment_record_list = 5;  // 项目部署记录列表
+  repeated ReturnProjectDeploymentRecord items = 5;  // 项目部署记录列表
 }
 
 // 新建项目部署记录
@@ -80,3 +80,29 @@ message QueryProjectDeploymentRecord {
   google.protobuf.Int32Value      page_size = 5;         // 每页多少数据
 }
 
+// 更新项目部署记录
+message PutProjectDeploymentRecord {
+  int32            id = 1;          // 部署记录id
+  int32            project_id = 2;  // 项目id
+  int32            status = 3;      // 项目部署状态
+  string           version = 4;     // 版本信息
+  string           change_log = 5;  // 版本更新信息
+  string           developers = 6;  // 开发人员
+  string           testers = 7;     // 测试人员
+  string           deployed_at = 8; // 部署时间
+  int32            total_time = 9;  // 本次迭代开发总时间（单位：天）
+  string           note = 10;       // 备注
+  int32            updated_by = 11; // 最近更新人id
+  int32            is_deleted = 12; // 删除标记
+}
+
+message Test {
+    int64 created_at=1 [(scalapb.field).type = "java.time.Instant"];
+}
+message T {
+  int64 oo=1;
+}
+
+message Test1 {
+  T t=1;
+}

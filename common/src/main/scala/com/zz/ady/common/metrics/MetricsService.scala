@@ -1,10 +1,12 @@
 package com.zz.ady.common.metrics
 
 import java.io.StringWriter
+import java.util
+import java.util.{HashSet, LinkedHashSet}
 
 import cats.implicits._
 import cats.effect._
-import io.prometheus.client.CollectorRegistry
+import io.prometheus.client.{CollectorRegistry, CounterMetricFamily}
 import io.prometheus.client.exporter.common.TextFormat
 import org.http4s._
 import org.http4s.dsl.Http4sDsl
@@ -19,6 +21,9 @@ object MetricsService {
         Sync[F]
           .delay {
             val writer = new StringWriter
+            val a=new HashSet[java.lang.String]()
+            a.add("list_request_aa")
+
             TextFormat.write004(writer, collectorRegistry.metricFamilySamples)
             writer.toString
           }

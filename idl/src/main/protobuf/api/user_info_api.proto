@@ -25,7 +25,7 @@ message UserInfoList {
   int32                           index = 2;                     // 页码索引
   int32                           page_size = 3;                 // 每页大小
   int32                           size = 4;                      // 共多少页
-  repeated ReturnUserInfo         return_user_info_list = 5;     // 角色列表
+  repeated ReturnUserInfo         items = 5;     // 角色列表
 }
 
 // 新建用户

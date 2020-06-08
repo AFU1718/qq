@@ -18,7 +18,7 @@ import io.prometheus.client.CollectorRegistry
 import org.http4s.metrics.prometheus.Prometheus
 
 object ApiService {
-  def apply[F[_]: ConcurrentEffect: Timer](xa: Transactor[F])(implicit system: ActorSystem[_],dc: DatabaseComponent[F]): ApiService[F] = new ApiService[F](xa)
+  def apply[F[_]: ConcurrentEffect: Timer](xa: Transactor[F])(implicit system: ActorSystem[_],dc: DatabaseComponent[F]): ApiService[F] = new ApiService[F](xa,true)
 }
 
 class ApiService[F[_]: ConcurrentEffect: Timer](xa: Transactor[F],val cors: Boolean = false)(implicit system: ActorSystem[_], dc: DatabaseComponent[F]) {

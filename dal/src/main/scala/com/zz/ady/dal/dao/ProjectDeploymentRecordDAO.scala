@@ -5,7 +5,7 @@ import java.time.Instant
 
 import cats.effect.Sync
 import com.zz.ady.dal.model.{Project, UserInfo}
-import com.zz.ady.idl.{ProjectDeploymentRecord, ReturnProjectDeploymentRecord}
+import com.zz.ady.idl.{ProjectDeploymentRecord, PutProjectDeploymentRecord, ReturnProjectDeploymentRecord}
 //import com.zz.ady.dal.model.ProjectDeploymentRecord
 import doobie.implicits._
 import doobie.util.transactor.Transactor
@@ -41,8 +41,8 @@ class ProjectDeploymentRecordDAO[F[_] : Sync](xa: Transactor[F]) extends Project
   def deleteProjectDeploymentRecord(id: Int): F[Int] =
     deleteProjectDeploymentRecordSql(id).run.transact(xa)
 
-  def updateProjectDeploymentRecord(projectDeploymentRecord: ProjectDeploymentRecord): F[Int] =
-    updateProjectDeploymentRecordSql(projectDeploymentRecord).run.transact(xa)
+  def updateProjectDeploymentRecord(putProjectDeploymentRecord: PutProjectDeploymentRecord): F[Int] =
+    updateProjectDeploymentRecordSql(putProjectDeploymentRecord).run.transact(xa)
 
   def queryProjectDeploymentRecord(optionProjectId: Option[Int], optionProjectName: Option[String], optionStatus: Option[Int], optionPageNo: Option[Int], optionPageSize: Option[Int]): F[Vector[ReturnProjectDeploymentRecord]] =
     queryProjectDeploymentRecordSql(optionProjectId, optionProjectName, optionStatus, optionPageNo, optionPageSize).to[Vector].transact(xa)

@@ -7,7 +7,7 @@ import cats.effect.{Effect, Sync}
 import cats.implicits._
 import com.typesafe.config.{Config, ConfigFactory}
 import com.typesafe.scalalogging.Logger
-import com.zz.ady.idl.{PostProjectDeploymentRecord, Project, ProjectDeploymentRecord, ProjectDeploymentRecordList, ReturnProject, ReturnProjectDeploymentRecord, UserInfo}
+import com.zz.ady.idl.{PostProjectDeploymentRecord, Project, ProjectDeploymentRecord, ProjectDeploymentRecordList, PutProjectDeploymentRecord, ReturnProject, ReturnProjectDeploymentRecord, UserInfo}
 import com.zz.ady.backstage.config.AppConfig
 import com.zz.ady.dal.dao.{ProjectDAO, ProjectDeploymentRecordDAO, UserInfoDAO}
 //import com.zz.ady.dal.model.ProjectDeploymentRecord
@@ -50,9 +50,9 @@ class ProjectDeploymentRecordService[F[_] : Effect](xa: Transactor[F]) {
     } yield a
   }
 
-  def updateProjectDeploymentRecord(projectDeploymentRecord: ProjectDeploymentRecord): F[Int] = {
+  def updateProjectDeploymentRecord(putProjectDeploymentRecord: PutProjectDeploymentRecord): F[Int] = {
     for {
-      a <- projectDeploymentRecordDAO.updateProjectDeploymentRecord(projectDeploymentRecord)
+      a <- projectDeploymentRecordDAO.updateProjectDeploymentRecord(putProjectDeploymentRecord)
     } yield a
   }
 
@@ -62,11 +62,11 @@ class ProjectDeploymentRecordService[F[_] : Effect](xa: Transactor[F]) {
       count <- projectDeploymentRecordDAO.countProjectDeploymentRecord(optionProjectId, optionProjectName, optionStatus)
     } yield {
       ProjectDeploymentRecordList(
-        count = count,
-        index = optionPageNo.getOrElse(1),
+        total = count,
+        pageNo = optionPageNo.getOrElse(1),
         pageSize = optionPageSize.getOrElse(10),
         size = Math.ceil(count * 1.0 / optionPageSize.getOrElse(10)).toInt,
-        returnProjectDeploymentRecordList = returnProjectDeploymentRecordList.toList
+        items = returnProjectDeploymentRecordList.toList
       )
     }
   }

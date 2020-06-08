@@ -58,7 +58,7 @@ class ProjectGroupService[F[_] : Effect](xa: Transactor[F]) {
         size = Math.ceil(count * 1.0 / optionPageSize.getOrElse(10)).toInt,
         index = optionPageNo.getOrElse(1),
         pageSize = optionPageSize.getOrElse(10),
-        returnProjectGroupList = returnProjectGroupList.toList
+        items = returnProjectGroupList.toList
       )
     }
   }

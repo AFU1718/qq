@@ -24,7 +24,7 @@ message RoleList {
   int32                           index = 2;                     // 页码索引
   int32                           page_size = 3;                 // 每页大小
   int32                           size = 4;                      // 共多少页
-  repeated ReturnRole             return_role_list = 5;          // 角色列表
+  repeated ReturnRole             items = 5;          // 角色列表
 }
 
 message ReturnRole {

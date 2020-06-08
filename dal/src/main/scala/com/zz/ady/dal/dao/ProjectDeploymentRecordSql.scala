@@ -3,8 +3,9 @@ package com.zz.ady.dal.dao
 import java.time.Instant
 
 import com.typesafe.scalalogging.Logger
+import com.zz.ady.common.util.TimeTransUtil.{stringToInstant, timestamp2String2}
 import com.zz.ady.dal.model.UserInfo
-import com.zz.ady.idl.{ProjectDeploymentRecord, ReturnProjectDeploymentRecord}
+import com.zz.ady.idl.{ProjectDeploymentRecord, PutProjectDeploymentRecord, ReturnProjectDeploymentRecord}
 import doobie.util.Read
 //import com.zz.ady.dal.model.ProjectDeploymentRecord
 import doobie.implicits._
@@ -62,18 +63,18 @@ trait ProjectDeploymentRecordSql extends Sql {
        """.stripMargin ++ whereAndOpt(f1)).update
   }
 
-  def updateProjectDeploymentRecordSql(projectDeploymentRecord: ProjectDeploymentRecord): doobie.Update0 = {
-    val id = projectDeploymentRecord.id
-    val projectId = projectDeploymentRecord.projectId
-    val status = projectDeploymentRecord.status
-    val version = projectDeploymentRecord.version
-    val changeLog = projectDeploymentRecord.changeLog
-    val developers = projectDeploymentRecord.developers
-    val testers = projectDeploymentRecord.testers
-    val deployedAt = Instant.parse(projectDeploymentRecord.deployedAt)
-    val totalTime = projectDeploymentRecord.totalTime
-    val note = projectDeploymentRecord.note
-    val updatedBy = projectDeploymentRecord.updatedBy
+  def updateProjectDeploymentRecordSql(putProjectDeploymentRecord: PutProjectDeploymentRecord): doobie.Update0 = {
+    val id = putProjectDeploymentRecord.id
+    val projectId = putProjectDeploymentRecord.projectId
+    val status = putProjectDeploymentRecord.status
+    val version = putProjectDeploymentRecord.version
+    val changeLog = putProjectDeploymentRecord.changeLog
+    val developers = putProjectDeploymentRecord.developers
+    val testers = putProjectDeploymentRecord.testers
+    val deployedAt = stringToInstant(timestamp2String2(putProjectDeploymentRecord.deployedAt.toLong))
+    val totalTime = putProjectDeploymentRecord.totalTime
+    val note = putProjectDeploymentRecord.note
+    val updatedBy = putProjectDeploymentRecord.updatedBy
 
     val f1 = Option(id).map(v => fr"id = $v")
 

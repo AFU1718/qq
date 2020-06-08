@@ -76,7 +76,7 @@ abstract class HttpService[F[_]: ConcurrentEffect: Timer: DatabaseComponent]()(i
 
 object HttpService {
 
-  def apply[F[_]: ConcurrentEffect: Timer]()(implicit system: ActorSystem[_], dc: DatabaseComponent[F]): HttpService[F] =
+  def apply[F[R]: ConcurrentEffect: Timer]()(implicit system: ActorSystem[_], dc: DatabaseComponent[F]): HttpService[F] =
     new HttpService[F] {
       val routes: F[HttpRoutes[F]] = ApiService[F](dc.main).routes
     }

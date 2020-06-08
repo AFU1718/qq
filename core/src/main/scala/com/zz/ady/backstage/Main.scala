@@ -5,7 +5,7 @@ import java.util.UUID
 import akka.actor.typed._
 import akka.actor.typed.SpawnProtocol.Command
 import cats.Functor
-import cats.effect.{ExitCode, IO, IOApp, Sync, SyncIO}
+import cats.effect.{ConcurrentEffect, ExitCode, IO, IOApp, Sync, SyncIO, Timer}
 import pureconfig.ConfigSource
 import com.ag.akka.discovery.consul.ConsulAkkaNodeDiscoverer
 import com.typesafe.scalalogging.Logger
@@ -30,15 +30,24 @@ object Main extends IOApp {
       .at("akka.cluster.seed-nodes")
       .load[Vector[String]] match {
       case Right(xs) if xs.nonEmpty => None
-      case _                        => Option(ConsulAkkaNodeDiscoverer(selfUuid))
+      case _ => Option(ConsulAkkaNodeDiscoverer(selfUuid))
     }
 
   def run(args: List[String]): IO[ExitCode] = {
     DatabaseComponent[IO](config.database) use { implicit dc =>
       AkkaHttpService().serve()
+      val a: (Int, Int) =1->2
+
       for {
-        _ <- IO { startAkkaCluster() }
-        r <- HttpService[IO].serve(config.http.main)
+        _ <- IO {
+          startAkkaCluster()
+        }
+        a = implicitly[ConcurrentEffect[IO]]
+        b = implicitly[Timer[IO]]
+        d = implicitly[DatabaseComponent[IO]]
+
+
+        r <- HttpService[IO]()(a, b, system, d).serve(config.http.main)
       } yield r
     }
   }
